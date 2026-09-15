@@ -1,102 +1,100 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>홍길동 | Gildong Hong</title>
+<title>Duwon Yang | Extreme Mechanics Lab, POSTECH</title>
+<meta name="description" content="Duwon Yang — M.S. candidate in Mechanical Engineering at POSTECH. Thick-panel origami, reconfigurable structures, load-bearing origami.">
 
 <!-- ─────────────────────────────────────────────────────────────
-   수정 위치
-   ① 이름·사진·연락처·학력·약력 : <section id="home">
-   ② 연구 주제(홈 슬라이드 + Research Interests) : <script>의 TOPICS
-   ③ Research Experiences : <script>의 EXPERIENCES
-   ④ About / Publications  : 각 <section>
-   사진은 index.html 옆에 images/profile.jpg 로 넣으면 됩니다.
+   수정 위치 (내용은 모두 영어)
+   ① 사진·연락처·학력·약력  : <section id="home">
+   ② Research Interests + 홈 슬라이드 : <script>의 INTERESTS
+   ③ Research Experiences   : <script>의 PROJECTS / POSITIONS
+   ④ About / Publications / Awards : 각 <section>
+   사진은 index.html 옆 images/ 폴더에 넣으세요.
    ───────────────────────────────────────────────────────────── -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --paper:#FCFCFA; --panel:#E4E2DC; --ink:#171C22; --soft:#3A424C;
   --graphite:#717A85; --mountain:#C33A25; --valley:#1F4FA8;
-  --sans:"IBM Plex Sans KR",system-ui,sans-serif;
-  --disp:"IBM Plex Sans Condensed","IBM Plex Sans KR",system-ui,sans-serif;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;
+  --disp:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-body{
-  margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);
-  font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;
-}
+body{margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--valley);outline-offset:3px}
 
-/* ── 상단 메뉴 ─────────────────────────────────── */
+/* 상단 메뉴 */
 .top{position:sticky;top:0;z-index:60;background:rgba(252,252,250,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--panel)}
 .top .in{max-width:1120px;margin:0 auto;padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{font-family:var(--disp);font-weight:700;font-size:19.5px;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}
 .brand span{font-family:var(--sans);font-weight:500;font-size:15px;color:var(--graphite);margin-left:7px}
 .menu{display:flex;align-items:center;gap:2px}
-.menu>a,.mbtn{
-  font-family:var(--sans);font-size:14.5px;color:var(--soft);background:none;border:0;cursor:pointer;
-  text-decoration:none;padding:20px 13px;border-bottom:2px solid transparent;display:inline-block;
-}
+.menu>a,.mbtn{font-family:var(--sans);font-size:14.5px;color:var(--soft);background:none;border:0;cursor:pointer;
+  text-decoration:none;padding:20px 13px;border-bottom:2px solid transparent;display:inline-block}
 .menu>a:hover,.mbtn:hover{color:var(--ink)}
 .menu>a.on,.drop.on .mbtn{color:var(--ink);border-bottom-color:var(--mountain)}
 .drop{position:relative}
-.mbtn::after{content:"";display:inline-block;width:5px;height:5px;margin-left:7px;vertical-align:2px;border-right:1.4px solid currentColor;border-bottom:1.4px solid currentColor;transform:rotate(45deg)}
-.dpanel{position:absolute;right:0;top:100%;min-width:216px;background:var(--paper);border:1px solid var(--panel);box-shadow:0 12px 28px rgba(23,28,34,.09);display:none}
+.mbtn::after{content:"";display:inline-block;width:5px;height:5px;margin-left:7px;vertical-align:2px;
+  border-right:1.4px solid currentColor;border-bottom:1.4px solid currentColor;transform:rotate(45deg)}
+.dpanel{position:absolute;right:0;top:100%;min-width:216px;background:var(--paper);border:1px solid var(--panel);
+  box-shadow:0 12px 28px rgba(23,28,34,.09);display:none}
 .drop:hover .dpanel,.drop.open .dpanel{display:block}
 .dpanel a{display:block;padding:11px 16px;font-size:14.5px;text-decoration:none;color:var(--soft)}
 .dpanel a:hover{background:#F2F0EA;color:var(--ink)}
 .dpanel a.on{color:var(--mountain)}
 
-/* ── 페이지 ────────────────────────────────────── */
+/* 페이지 */
 .page{display:none}
 .page.on{display:block}
 .wrap{max-width:1120px;margin:0 auto;padding:56px 28px 96px}
 h2{font-family:var(--disp);font-weight:600;font-size:27px;margin:0 0 6px;letter-spacing:.01em}
 h2+.sub{color:var(--graphite);font-size:14.5px;margin:0 0 36px}
 h3{font-family:var(--disp);font-weight:600;font-size:18px;margin:0 0 8px}
-p{max-width:72ch}
-.rule{border:0;border-top:1px solid var(--panel);margin:54px 0}
-
-/* ── 홈: 사진 + 약력 ───────────────────────────── */
-.intro{display:grid;grid-template-columns:270px 1fr;gap:46px;align-items:start}
-.photo{border:1px solid var(--panel);background:#EFEDE7;aspect-ratio:3/4;overflow:hidden;position:relative}
-.photo img{width:100%;height:100%;object-fit:cover}
-.photo .ph{position:absolute;inset:0;display:grid;place-items:center;color:#A9A399;font-size:13px;text-align:center;padding:16px;line-height:1.6}
-.nm{font-family:var(--disp);font-weight:700;font-size:38px;line-height:1.1;margin:2px 0 4px}
-.nm em{font-family:var(--sans);font-style:normal;font-weight:500;font-size:22px;margin-left:10px;color:var(--soft)}
-.mail{font-size:15px;color:var(--soft);margin:0 0 16px}
-.mail a{text-decoration:none;border-bottom:1px solid var(--panel)}
-.mail a:hover{color:var(--valley);border-bottom-color:var(--valley)}
-.links{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 26px}
-.links a{
-  display:inline-block;font-size:13px;text-decoration:none;color:var(--soft);
-  border:1px solid var(--panel);border-radius:100px;padding:4px 13px;transition:.16s;
-}
-.links a:hover{border-color:var(--valley);color:var(--valley)}
-.lede{font-size:16.5px;margin:0 0 10px}
-.lede b{font-weight:600}
-.edu{list-style:none;padding:0;margin:0}
-.edu li{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:8px 0;font-size:15px;border-bottom:1px dashed var(--panel)}
-.edu .y{color:var(--graphite);font-family:var(--disp);font-size:14.5px}
-.hd{font-family:var(--disp);font-size:16px;font-weight:600;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+p{max-width:74ch}
+.rule{border:0;border-top:1px solid var(--panel);margin:50px 0}
+.hd{font-family:var(--disp);font-size:16px;font-weight:600;margin:0 0 14px;display:flex;align-items:center;gap:10px}
 .hd::before{content:"";width:22px;border-top:2px solid var(--mountain)}
 
-/* ── 홈 하단 연구 슬라이드(자동 흐름) ──────────── */
-.stripwrap{margin-top:14px}
+/* 홈: 사진 + 약력 */
+.intro{display:grid;grid-template-columns:272px 1fr;gap:48px;align-items:start}
+.photo{border:1px solid var(--panel);background:#E7EAEE;aspect-ratio:3/4;overflow:hidden;position:relative}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo .ph{position:absolute;inset:0;display:grid;place-items:center;color:#9AA1A9;font-size:13px;text-align:center;padding:16px;line-height:1.6}
+.nm{font-family:var(--disp);font-weight:700;font-size:40px;line-height:1.08;margin:0 0 6px}
+.nm em{font-family:var(--sans);font-style:normal;font-weight:500;font-size:22px;margin-left:11px;color:var(--soft)}
+.mail{font-size:14.5px;color:var(--soft);margin:0 0 6px}
+.mail a{text-decoration:none;border-bottom:1px solid var(--panel)}
+.mail a:hover{color:var(--valley);border-bottom-color:var(--valley)}
+.affil{font-size:14.5px;color:var(--graphite);margin:0 0 18px}
+.links{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 26px}
+.links a{display:inline-block;font-size:13px;text-decoration:none;color:var(--soft);
+  border:1px solid var(--panel);border-radius:100px;padding:4px 13px;transition:.16s}
+.links a:hover{border-color:var(--valley);color:var(--valley)}
+.lede{font-size:16.5px;margin:0 0 8px}
+.lede b{font-weight:600}
+.lede .hl{color:var(--mountain);font-weight:500}
+.edu{list-style:none;padding:0;margin:0}
+.edu li{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:10px 0;font-size:15px;border-bottom:1px dashed var(--panel)}
+.edu .y{color:var(--graphite);font-family:var(--disp);font-size:14.5px}
+.edu .d{font-size:13.5px;color:var(--graphite);margin:2px 0 0}
+
+/* 홈 하단 자동 슬라이드 */
+.stripwrap{margin-top:8px}
 .striphead{max-width:1120px;margin:0 auto;padding:0 28px;display:flex;align-items:flex-end;justify-content:space-between;gap:18px}
 .striphead p{font-size:14.5px;color:var(--graphite);margin:0}
 .nudge{display:flex;gap:6px}
-.nudge button{
-  width:34px;height:34px;border:1px solid var(--panel);background:var(--paper);border-radius:50%;
-  cursor:pointer;display:grid;place-items:center;color:var(--soft);transition:.16s;
-}
+.nudge button{width:34px;height:34px;border:1px solid var(--panel);background:var(--paper);border-radius:50%;
+  cursor:pointer;display:grid;place-items:center;color:var(--soft);transition:.16s}
 .nudge button:hover{border-color:var(--mountain);color:var(--mountain)}
 .nudge svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9}
 .strip{position:relative;width:100vw;margin:22px 0 0 calc(50% - 50vw);overflow:hidden;cursor:grab}
@@ -105,48 +103,59 @@ p{max-width:72ch}
 .strip::before{left:0;background:linear-gradient(90deg,var(--paper),rgba(252,252,250,0))}
 .strip::after{right:0;background:linear-gradient(270deg,var(--paper),rgba(252,252,250,0))}
 .reel{display:flex;gap:18px;will-change:transform}
-.rcard{
-  flex:0 0 332px;border:1px solid var(--panel);background:#fff;text-decoration:none;color:inherit;
-  display:block;transition:border-color .18s;
-}
+.rcard{flex:0 0 340px;border:1px solid var(--panel);background:#fff;text-decoration:none;color:inherit;display:block;transition:border-color .18s}
 .rcard:hover{border-color:var(--mountain)}
 .rcard .thumb{aspect-ratio:16/10;background:#10141A;overflow:hidden}
 .rcard .thumb svg,.rcard .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .rcard .body{padding:16px 18px 18px}
-.rcard .k{font-size:12px;letter-spacing:.1em;color:var(--mountain);margin:0 0 7px}
+.rcard .k{font-size:12px;letter-spacing:.09em;color:var(--mountain);margin:0 0 7px}
 .rcard h4{font-family:var(--disp);font-size:17px;font-weight:600;margin:0 0 7px;line-height:1.3}
 .rcard p{font-size:13.5px;color:var(--graphite);margin:0;line-height:1.6}
 
-/* ── Research Interests ────────────────────────── */
+/* Research 페이지 공용 */
 .topic{display:grid;grid-template-columns:400px 1fr;gap:34px;align-items:start;padding:34px 0;border-top:1px solid var(--panel)}
-.topic:first-of-type{border-top:0;padding-top:6px}
-.topic .fig{background:#10141A;aspect-ratio:16/10;overflow:hidden}
-.topic .fig svg,.topic .fig img{width:100%;height:100%;object-fit:cover;display:block}
-.topic .k{font-size:12.5px;letter-spacing:.1em;color:var(--mountain);margin:0 0 8px}
+.topic:first-of-type{border-top:0;padding-top:4px}
+.fig{background:#10141A;aspect-ratio:16/10;overflow:hidden}
+.fig svg,.fig img{width:100%;height:100%;object-fit:cover;display:block}
+.k{font-size:12.5px;letter-spacing:.09em;color:var(--mountain);margin:0 0 8px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;list-style:none;padding:0;margin:14px 0 0}
-.tags li{font-size:12.5px;color:var(--soft);border:1px solid var(--panel);border-radius:100px;padding:3px 11px}
+.tags li{font-size:12.5px;color:var(--valley);border:1px solid var(--panel);border-radius:100px;padding:3px 11px}
+.bul{list-style:none;padding:0;margin:10px 0 0}
+.bul li{position:relative;padding-left:20px;font-size:15px;color:var(--soft);margin:0 0 6px;max-width:72ch}
+.bul li::before{content:"";position:absolute;left:0;top:11px;width:9px;border-top:2px solid var(--mountain)}
+.meta{font-size:13.5px;color:var(--graphite);margin:0 0 2px;font-family:var(--disp)}
 
-/* ── Research Experiences ──────────────────────── */
-.exp{list-style:none;padding:0;margin:0;border-left:2px solid var(--panel)}
-.exp li{position:relative;padding:0 0 38px 28px}
-.exp li::before{content:"";position:absolute;left:-6px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--valley)}
-.exp .when{font-family:var(--disp);font-size:14px;color:var(--graphite);margin:0 0 4px}
-.exp .where{font-size:14.5px;color:var(--soft);margin:0 0 10px}
-.exp .where b{font-weight:500;color:var(--ink)}
-.exp p.desc{font-size:15px;color:var(--soft);margin:0}
-.fund{display:inline-block;font-size:12px;color:var(--valley);border:1px solid var(--valley);border-radius:3px;padding:1px 8px;margin-top:10px}
+/* Positions 타임라인 */
+.pos{list-style:none;padding:0;margin:0 0 10px;border-left:2px solid var(--panel)}
+.pos li{position:relative;padding:0 0 30px 26px}
+.pos li::before{content:"";position:absolute;left:-6px;top:10px;width:10px;height:10px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--valley)}
+.pos .when{font-family:var(--disp);font-size:14px;color:var(--graphite);margin:0 0 3px}
+.pos p.w{font-size:14.5px;color:var(--soft);margin:0}
+.pos p.w b{font-weight:500;color:var(--ink)}
 
-/* ── Publications ──────────────────────────────── */
-.pubs{list-style:none;padding:0;margin:0 0 42px}
-.pubs li{display:grid;grid-template-columns:78px 1fr;gap:20px;padding:19px 0;border-bottom:1px solid var(--panel)}
+/* Publications */
+.pubs{list-style:none;padding:0;margin:0 0 40px;counter-reset:p}
+.pubs li{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--panel)}
 .pubs li:first-child{border-top:1px solid var(--panel)}
-.yr{font-family:var(--disp);font-size:15px;color:var(--graphite)}
+.pubs li::before{counter-increment:p;content:counter(p);font-family:var(--disp);font-size:15px;color:var(--graphite);padding-top:2px}
 .pubs h4{font-size:16.5px;font-weight:500;margin:0 0 5px;line-height:1.5}
 .venue{font-size:14px;color:var(--graphite);margin:0}
 .venue em{font-style:italic;color:var(--soft)}
-.badge{display:inline-block;font-size:11.5px;border:1px solid var(--valley);color:var(--valley);border-radius:3px;padding:1px 8px;margin-left:7px;vertical-align:1.5px}
+.badge{display:inline-block;font-size:11.5px;border:1px solid var(--valley);color:var(--valley);
+  border-radius:3px;padding:1px 8px;margin-left:8px;vertical-align:1.5px;white-space:nowrap}
+.badge.ok{border-color:var(--mountain);color:var(--mountain)}
+.me{font-weight:600;color:var(--ink)}
 
-/* ── 반응형 ────────────────────────────────────── */
+/* Awards */
+.awards{list-style:none;padding:0;margin:0;counter-reset:a}
+.awards li{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--panel)}
+.awards li:first-child{border-top:1px solid var(--panel)}
+.awards li::before{counter-increment:a;content:counter(a);font-family:var(--disp);font-size:15px;color:var(--graphite);padding-top:3px}
+.awards h4{font-family:var(--disp);font-size:17px;font-weight:600;margin:0 0 3px}
+.awards p{font-size:14px;color:var(--graphite);margin:0}
+
+/* 반응형 */
 @media(max-width:900px){
   .top .in{height:auto;flex-direction:column;align-items:flex-start;gap:0;padding:12px 18px 0}
   .menu{width:100%;overflow-x:auto;gap:0}
@@ -158,11 +167,12 @@ p{max-width:72ch}
   .dpanel a.on{color:var(--ink);border-bottom-color:var(--mountain);background:none}
   .wrap{padding:34px 18px 70px}
   .intro{grid-template-columns:1fr;gap:26px}
-  .photo{max-width:230px;aspect-ratio:3/3.6}
-  .nm{font-size:30px}.nm em{font-size:18px;display:block;margin:4px 0 0}
+  .photo{max-width:224px;aspect-ratio:3/3.7}
+  .nm{font-size:31px}.nm em{font-size:18px;display:block;margin:5px 0 0}
   .topic{grid-template-columns:1fr;gap:18px}
+  .edu li{grid-template-columns:1fr;gap:2px}
   .striphead{padding:0 18px}
-  .rcard{flex-basis:266px}
+  .rcard{flex-basis:270px}
   .strip::before,.strip::after{width:36px}
 }
 @media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
@@ -172,39 +182,40 @@ p{max-width:72ch}
 
 <header class="top">
   <div class="in">
-    <!-- ① 이름 -->
-    <a class="brand" href="#/home">Gildong Hong <span>홍길동</span></a>
+    <a class="brand" href="#/home">Duwon Yang <span>양두원</span></a>
     <nav class="menu" id="menu">
       <a href="#/home" data-p="home">Home</a>
       <a href="#/about" data-p="about">About</a>
       <div class="drop" id="drop">
         <button class="mbtn" type="button" id="dbtn" aria-expanded="false">Research</button>
         <div class="dpanel">
-          <a href="#/experiences" data-p="experiences">Research Experiences</a>
           <a href="#/interests" data-p="interests">Research Interests</a>
+          <a href="#/experiences" data-p="experiences">Research Experiences</a>
         </div>
       </div>
       <a href="#/publications" data-p="publications">Publications</a>
+      <a href="#/awards" data-p="awards">Awards</a>
     </nav>
   </div>
 </header>
 
-<!-- ══ HOME ══════════════════════════════════════ -->
+<!-- ══ HOME ══ -->
 <section class="page" id="home">
-  <div class="wrap" style="padding-bottom:40px">
+  <div class="wrap" style="padding-bottom:36px">
     <div class="intro">
-      <!-- 사진: images/profile.jpg -->
       <div class="photo">
-        <div class="ph">images/profile.jpg<br>파일을 넣으면 사진이 표시됩니다</div>
-        <img id="profile" src="images/profile.jpg" alt="프로필 사진" style="display:none">
+        <div class="ph">images/profile.jpg</div>
+        <img id="profile" src="images/profile.jpg" alt="Duwon Yang" style="display:none">
       </div>
 
       <div>
-        <h1 class="nm">Gildong Hong <em>홍길동</em></h1>
+        <h1 class="nm">Duwon Yang <em>양두원</em></h1>
         <p class="mail">
-          <a href="mailto:gildong@example.ac.kr">gildong@example.ac.kr</a> /
-          <a href="mailto:gildong@naver.com">gildong@naver.com</a>
+          <a href="mailto:didendnjs00@postech.ac.kr">didendnjs00@postech.ac.kr</a> /
+          <a href="mailto:doonebest0730@gmail.com">doonebest0730@gmail.com</a>
         </p>
+        <p class="affil">Extreme Mechanics Lab, Department of Mechanical Engineering, POSTECH, Pohang, Korea</p>
+
         <ul class="links">
           <li><a href="#">Google Scholar</a></li>
           <li><a href="#">ResearchGate</a></li>
@@ -213,41 +224,49 @@ p{max-width:72ch}
           <li><a href="#">CV (PDF)</a></li>
         </ul>
 
-        <p class="lede">○○대학교 <b>기계공학과</b> 박사과정입니다.</p>
-        <p class="lede">전개형 구조와 두께 패널 오리가미 기구학을 연구합니다.</p>
+        <p class="lede">I am an M.S. candidate in <span class="hl">Mechanical Engineering</span> at POSTECH.</p>
+        <p class="lede">My concentration is in origami-based design and structural mechanics.</p>
+        <p class="lede" style="color:var(--graphite);font-size:15px">Thick-panel origami · Reconfigurable structures · Load-bearing origami</p>
 
         <hr class="rule" style="margin:30px 0 22px">
 
         <p class="hd">Education</p>
         <ul class="edu">
-          <li><span class="y">2023 –</span><span>Ph.D. student, Mechanical Engineering, ○○University</span></li>
-          <li><span class="y">2023</span><span>M.S., Mechanical Engineering, ○○University</span></li>
-          <li><span class="y">2021</span><span>B.S., Mechanical Engineering, ○○University</span></li>
+          <li>
+            <span class="y">Mar. 2025 – Present</span>
+            <span>M.S. in Mechanical Engineering, POSTECH
+              <span class="d">Extreme Mechanics Lab · Advisor: Prof. Anna Lee</span></span>
+          </li>
+          <li>
+            <span class="y">Mar. 2019 – Feb. 2025</span>
+            <span>B.S. in Mechanical &amp; Control Engineering, Handong Global University
+              <span class="d">Ranked 2nd out of 20</span></span>
+          </li>
         </ul>
 
         <hr class="rule" style="margin:34px 0 22px">
 
         <p class="hd">Biography</p>
-        <p>학부와 석사를 ○○대학교에서 마쳤고, ○○○ 교수님 지도 아래 전개형 구조 설계를 주제로
-        연구를 시작했습니다. 접힘을 설계 변수로 삼아 얇은 종이의 기구학을 실제 두께를 가진 패널
-        구조로 옮기는 문제를 다뤄 왔습니다.</p>
-        <p>현재는 마름모 회전 패턴에서 두 가지 접힘 경로가 모두 성립하는 두께 패널 오리가미를
-        설계하고, 해석 결과를 아크릴 시작품으로 검증하고 있습니다. 관심 분야는 전개형 구조물,
-        형상 가변 메타물질, 기구학 기반 설계 도구입니다.</p>
+        <p>I am an M.S. candidate in Mechanical Engineering at POSTECH (Pohang University of Science
+        and Technology), working in the Extreme Mechanics Lab under Prof. Anna Lee. My research is
+        centered on thick-panel origami and reconfigurable systems, including the kinematics and
+        mechanics of origami-based structures.</p>
+        <p>Before POSTECH I received my B.S. in Mechanical &amp; Control Engineering from Handong
+        Global University, where I worked as an undergraduate researcher in the Human Robotics Lab
+        under Dr. Jaehyo Kim on the analysis of human reaching motion.</p>
       </div>
     </div>
   </div>
 
-  <!-- 자동으로 흐르는 연구 슬라이드 -->
   <div class="stripwrap">
     <div class="striphead">
       <div>
-        <h2 style="font-size:23px">Research</h2>
-        <p>카드를 누르면 자세한 설명으로 이동합니다.</p>
+        <h2 style="font-size:23px">Research Interests</h2>
+        <p>Select a card to read more.</p>
       </div>
       <div class="nudge">
-        <button type="button" id="left" aria-label="왼쪽으로"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <button type="button" id="right" aria-label="오른쪽으로"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button type="button" id="left" aria-label="Scroll left"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" id="right" aria-label="Scroll right"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </div>
     <div class="strip" id="strip"><div class="reel" id="reel"></div></div>
@@ -255,90 +274,134 @@ p{max-width:72ch}
   <div style="height:80px"></div>
 </section>
 
-<!-- ══ ABOUT ═════════════════════════════════════ -->
+<!-- ══ ABOUT ══ -->
 <section class="page" id="about">
   <div class="wrap">
     <h2>About</h2>
-    <p class="sub">연구 방향과 배경</p>
-    <p>종이에서 성립하던 접힘 조건은 패널에 두께가 생기는 순간 간섭 때문에 깨집니다. 저는 힌지 축을
-    패널 표면에서 떼어 배치하는 방식으로 이 간섭을 해소하고, 하나의 패턴에서 서로 다른 두 접힘
-    상태를 얻는 설계를 연구합니다.</p>
-    <p>해석만으로는 확인되지 않는 부분이 많아, 기구학 계산과 시작품 제작을 항상 함께 진행합니다.
-    설계 단계에서 후보 패턴을 빠르게 걸러내는 절차를 만들고, 실제로 접히는지 손으로 확인하는
-    과정을 중요하게 생각합니다.</p>
+    <p class="sub">Research statement, skills and references</p>
+
+    <p>A crease pattern that folds cleanly on paper stops working once the panels have real
+    thickness: the facets collide, and the single degree of freedom that made the pattern useful
+    disappears. My work is about restoring that motion in thick, load-bearing panels — and about
+    getting more than one folded configuration out of a single assembly.</p>
+    <p>At POSTECH I proposed an extended offset crease method that accommodates thickness while
+    keeping a degree-6 vertex foldable in two directions, and analyzed the resulting kinematics with
+    a Lagrangian multiplier formulation. I also build what I design: laser-cut panel prototypes,
+    pneumatic actuators based on thickness-accommodated Kresling patterns, and finite element models
+    for industrial structures.</p>
 
     <hr class="rule">
     <p class="hd">Skills</p>
     <ul class="edu">
-      <li><span class="y">Design</span><span>SolidWorks, Rhino + Grasshopper, AutoCAD</span></li>
-      <li><span class="y">Analysis</span><span>ABAQUS, MATLAB, Python (NumPy / SciPy)</span></li>
-      <li><span class="y">Fabrication</span><span>레이저 가공, 3D 프린팅, 시작품 조립 및 계측</span></li>
+      <li><span class="y">CAD</span><span>SolidWorks, AutoCAD, Illustrator</span></li>
+      <li><span class="y">CAE</span><span>Abaqus, Ansys</span></li>
+      <li><span class="y">Programming</span><span>C, MATLAB, LaTeX</span></li>
+      <li><span class="y">Fabrication</span><span>Laser cutting, panel prototyping, mechanical testing</span></li>
+      <li><span class="y">Languages</span><span>Korean (native), English (intermediate)</span></li>
     </ul>
 
     <hr class="rule">
-    <p class="hd">Awards &amp; Activities</p>
+    <p class="hd">References</p>
     <ul class="edu">
-      <li><span class="y">2025</span><span>○○학회 우수논문상</span></li>
-      <li><span class="y">2024</span><span>○○ 대학원생 연구장학금</span></li>
-      <li><span class="y">2023 –</span><span>○○학회 학생회원</span></li>
+      <li>
+        <span class="y">Prof. Anna Lee</span>
+        <span>Department of Mechanical Engineering, POSTECH
+          <span class="d"><a href="mailto:annalee@postech.ac.kr">annalee@postech.ac.kr</a></span></span>
+      </li>
+      <li>
+        <span class="y">Dr. Jaehyo Kim</span>
+        <span>Human Robotics Lab, Handong Global University
+          <span class="d"><a href="mailto:jhkim@handong.edu">jhkim@handong.edu</a></span></span>
+      </li>
     </ul>
   </div>
 </section>
 
-<!-- ══ RESEARCH EXPERIENCES ══════════════════════ -->
-<section class="page" id="experiences">
-  <div class="wrap">
-    <h2>Research Experiences</h2>
-    <p class="sub">참여한 과제와 역할</p>
-    <ul class="exp" id="expList"></ul>
-  </div>
-</section>
-
-<!-- ══ RESEARCH INTERESTS ════════════════════════ -->
+<!-- ══ RESEARCH INTERESTS ══ -->
 <section class="page" id="interests">
   <div class="wrap">
     <h2>Research Interests</h2>
-    <p class="sub">현재 관심을 두고 있는 주제</p>
-    <div id="topicList"></div>
+    <p class="sub">Topics I am currently working on</p>
+    <div id="interestList"></div>
   </div>
 </section>
 
-<!-- ══ PUBLICATIONS ══════════════════════════════ -->
+<!-- ══ RESEARCH EXPERIENCES ══ -->
+<section class="page" id="experiences">
+  <div class="wrap">
+    <h2>Research Experiences</h2>
+    <p class="sub">Positions and projects</p>
+    <p class="hd">Positions</p>
+    <ul class="pos" id="posList"></ul>
+    <hr class="rule">
+    <p class="hd">Projects</p>
+    <div id="projList"></div>
+  </div>
+</section>
+
+<!-- ══ PUBLICATIONS ══ -->
 <section class="page" id="publications">
   <div class="wrap">
     <h2>Publications</h2>
-    <p class="sub">저널 논문</p>
+    <p class="sub">Journal articles, conference presentations and domestic papers</p>
+
+    <p class="hd">Journal Articles (SCI)</p>
     <ol class="pubs">
       <li>
-        <span class="yr">2026</span>
         <div>
-          <h4>Bi-Foldable Thick Panel Origami Based on a Diamond Rotational Pattern<span class="badge">준비 중</span></h4>
-          <p class="venue">G. Hong, ○○○ — <em>Thin-Walled Structures</em>, Special Issue: Morphing Metamaterials</p>
+          <h4><span class="me">Duwon Yang</span>, and Anna Lee*<span class="badge">In preparation</span></h4>
+          <p class="venue">Bi-foldable thick panel origami for reconfigurable structures</p>
         </div>
       </li>
       <li>
-        <span class="yr">2025</span>
         <div>
-          <h4>논문 제목을 여기에 입력합니다</h4>
-          <p class="venue">저자1, 저자2, G. Hong — <em>Journal Name</em>, vol. 00, pp. 000–000</p>
+          <h4>Jeongrak Lee<sup>+</sup>, Seonghyeon Kim<sup>+</sup>, <span class="me">Duwon Yang</span>, Minsoo Kim, and Anna Lee*<span class="badge">In preparation</span></h4>
+          <p class="venue">Design and development of a propellant-driven micro pneumatic actuator using Lab-on-PCB technology
+            <em style="display:block;font-size:13px;margin-top:3px">+ equally contributed</em></p>
         </div>
       </li>
     </ol>
 
-    <p class="hd">Conferences</p>
+    <p class="hd">International Conferences</p>
     <ol class="pubs">
       <li>
-        <span class="yr">2025</span>
         <div>
-          <h4>학회 발표 제목을 여기에 입력합니다</h4>
-          <p class="venue">대한기계학회 춘계학술대회, 제주</p>
+          <h4><span class="me">Duwon Yang</span>, and Anna Lee*</h4>
+          <p class="venue">Thickness-accommodating method for multi-configurable thick origami with bidirectional folding —
+            <em>International Conference on Precision Engineering and Sustainable Manufacturing</em>, Chiang Mai, Thailand, July 2025</p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="hd">Domestic Publications</p>
+    <ol class="pubs">
+      <li>
+        <div>
+          <h4>Hyunsu Kwak, Junsik Kim, <span class="me">Duwon Yang</span>, and Anna Lee*<span class="badge ok">Accepted</span></h4>
+          <p class="venue">Roll profile prediction formulas and FE analysis models for controlling work roll crown in 4-high hot rolling mills —
+            <em>Transactions of Materials Processing</em></p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ AWARDS ══ -->
+<section class="page" id="awards">
+  <div class="wrap">
+    <h2>Honors &amp; Awards</h2>
+    <p class="sub">Fellowships and competition awards</p>
+    <ol class="awards">
+      <li>
+        <div>
+          <h4>POSTECHIAN Fellowship</h4>
+          <p>POSTECH, Korea · 2025</p>
         </div>
       </li>
       <li>
-        <span class="yr">2024</span>
         <div>
-          <h4>학회 발표 제목을 여기에 입력합니다</h4>
-          <p class="venue">한국정밀공학회 추계학술대회, 부산</p>
+          <h4>Grand Prize, Clutch the Energy Camp</h4>
+          <p>Ministry of SMEs and Startups, Korea · 2022</p>
         </div>
       </li>
     </ol>
@@ -346,61 +409,75 @@ p{max-width:72ch}
 </section>
 
 <script>
-/* ═══ ② 연구 주제 ═══════════════════════════════
-   홈 슬라이드와 Research Interests 페이지에 함께 쓰입니다.
-   img: images/ 안의 사진 경로. 없으면 도면 그래픽이 표시됩니다.
-   ═══════════════════════════════════════════════ */
-const TOPICS = [
-  { kicker:"Thick Panel Origami", pattern:"diamond", img:"images/diamond-rpo.jpg",
-    title:"양방향으로 접히는 두께 패널 오리가미",
-    body:"마름모 회전 패턴의 힌지 축을 재배치해 두 접힘 경로를 모두 성립시킵니다.",
-    tags:["Diamond RPO","Bi-foldability","Kinematics"],
-    detail:"종이에서 성립하던 접힘 조건은 패널에 두께가 생기면 간섭 때문에 깨집니다. 힌지 위치를 패널 표면에서 떼어 배치하는 방식으로 이 간섭을 해소하고, 하나의 패턴에서 서로 다른 두 접힘 상태를 얻습니다." },
+/* ═══ ② Research Interests (홈 슬라이드에도 사용) ═══ */
+const INTERESTS = [
+  { kicker:"Thick-Panel Origami", pattern:"diamond", img:"images/thick-panel-origami.jpg",
+    title:"Thick-Panel Origami Design and Optimization",
+    body:"Restoring foldability once panels carry real thickness, and reaching several stable configurations from one assembly.",
+    tags:["Extended offset crease","Bi-foldability","Multi-configurable"],
+    detail:"Zero-thickness crease patterns lose their single degree of freedom as soon as the facets are given real thickness. I proposed an extended offset crease method that accommodates thickness while preserving the folding motion, and applied it so that one panel assembly folds in two directions and settles into multiple configurations. Geometry — sector angles, panel thickness, hinge offsets — is treated as the design space, and candidate patterns are screened before anything is cut." },
 
-  { kicker:"Morphing Metamaterials", pattern:"cell", img:"images/metamaterial.jpg",
-    title:"형상 가변 메타물질",
-    body:"접힘 상태에 따라 강성과 포아송비가 달라지는 셀 구조를 다룹니다.",
-    tags:["Metamaterial","Poisson's ratio","Tunable stiffness"],
-    detail:"단위 셀의 접힘 각도를 설계 변수로 두면 같은 재료로도 넓은 범위의 유효 물성을 얻을 수 있습니다. 셀 배열과 경계 조건에 따른 물성 변화를 해석과 실험으로 확인합니다." },
+  { kicker:"Reconfigurable Actuation", pattern:"hinge", img:"images/buckling-actuator.jpg",
+    title:"Buckling-Induced Actuator for Reconfigurable Robots",
+    body:"Pressure-driven origami actuators that snap between states instead of relying on motors.",
+    tags:["Kresling pattern","Pneumatic actuation","Soft actuator"],
+    detail:"Origami patterns that buckle between stable states can be driven by pressure rather than by motors, which matters when mass and packaging are tight. I developed a propellant-driven micro pneumatic actuator built on a thickness-accommodated Kresling pattern, and measured how its geometric parameters govern the rigidity of the inflated structure through cantilever and compression tests." },
 
-  { kicker:"Deployable Structures", pattern:"strip", img:"images/deployable.jpg",
-    title:"전개형 구조물",
-    body:"수납 부피를 줄이면서 전개 후 강성을 확보하는 구조를 목표로 합니다.",
-    tags:["Deployment","Packaging ratio","Space structures"],
-    detail:"수납 부피와 전개 후 강성은 보통 서로 상충합니다. 두께 패널 방식은 패널 자체가 하중을 받기 때문에 전개 후 별도 보강 없이 강성을 확보할 수 있다는 장점이 있습니다." },
-
-  { kicker:"Design & Simulation", pattern:"hinge", img:"images/simulation.jpg",
-    title:"기구학 해석과 설계 도구",
-    body:"힌지 배치에 따른 자유도와 간섭을 계산하고 접힘 경로를 추적합니다.",
-    tags:["DOF analysis","Path tracking","Parametric design"],
-    detail:"패턴 파라미터(섹터 각, 두께, 힌지 오프셋)를 입력하면 접힘 가능 여부와 간섭 지점을 판정하는 절차를 정리했습니다. 설계 초기 단계에서 후보 패턴을 빠르게 걸러내는 데 사용합니다." },
-
-  { kicker:"Prototyping", pattern:"sheet", img:"images/prototype.jpg",
-    title:"시작품 제작과 검증",
-    body:"두께 3 mm 아크릴과 PET 멤브레인 힌지로 실제 거동을 확인합니다.",
-    tags:["Acrylic t = 3 mm","PET membrane","α = 45°"],
-    detail:"레이저 가공한 아크릴 패널 사이에 PET 필름을 끼워 힌지를 구성했습니다. 해석에서 예측한 두 접힘 경로가 실물에서도 재현되는지, 경로 전환이 어느 지점에서 일어나는지를 확인합니다." }
+  { kicker:"Kinematics & Mechanics", pattern:"cell", img:"images/origami-kinematics.jpg",
+    title:"Kinematics and Mechanics of Origami-based Structures",
+    body:"Analytical models for thickened vertices and the load-bearing behaviour of folded assemblies.",
+    tags:["Degree-6 vertex","Lagrangian multiplier","Load-bearing origami"],
+    detail:"A thickened vertex is a constrained mechanism, not a sheet, so its motion has to be derived rather than assumed. I analyze the kinematics of thickened degree-6 vertices using a Lagrangian multiplier formulation, tracking how many degrees of freedom survive and where panels interfere along the folding path. The same models tell us how much load a folded assembly can carry once it is deployed." }
 ];
 
-/* ═══ ③ 연구 경력 ═══════════════════════════════ */
-const EXPERIENCES = [
-  { when:"2023.09 – 현재", role:"박사과정 연구원",
-    where:"○○대학교 전개형구조 연구실 · 지도교수 <b>○○○</b>",
-    desc:"두께 패널 오리가미의 접힘 조건을 정리하고, 마름모 회전 패턴 기반의 양방향 접힘 구조를 설계·제작하고 있습니다.",
-    fund:"한국연구재단 중견연구 과제" },
-
-  { when:"2021.03 – 2023.08", role:"석사과정 연구원",
-    where:"○○대학교 기계공학과 · 지도교수 <b>○○○</b>",
-    desc:"전개형 구조물의 수납 효율과 전개 후 강성을 함께 평가하는 지표를 정리하고, 축소 모형으로 검증했습니다.",
-    fund:"" },
-
-  { when:"2020.06 – 2021.02", role:"학부 연구생",
-    where:"○○대학교 기계공학과",
-    desc:"오리가미 패턴의 기구학 기초를 학습하고, 종이 모형 단계의 접힘 실험을 담당했습니다.",
-    fund:"" }
+/* ═══ ③ Research Experiences ═══ */
+const POSITIONS = [
+  { when:"Mar. 2025 – Present", role:"M.S. Candidate, Extreme Mechanics Lab",
+    where:"Department of Mechanical Engineering, POSTECH, Pohang, Korea · Advisor: <b>Prof. Anna Lee</b>" },
+  { when:"Jan. 2023 – Dec. 2023", role:"Undergraduate Researcher, Human Robotics Lab",
+    where:"Handong Global University, Pohang, Korea · Advisor: <b>Dr. Jaehyo Kim</b>" }
 ];
 
-/* ═══ 도면 그래픽(사진 없을 때) ═══ */
+const PROJECTS = [
+  { kicker:"POSTECH · 2025 – Present", pattern:"diamond", img:"images/proj-bifoldable.jpg",
+    title:"Bi-foldable Thick Panel Origami for Multi-configurable Systems",
+    bullets:[
+      "Proposed the extended offset crease method, a thickness-accommodating scheme for thick-panel origami",
+      "Performed kinematic analysis of a thickened degree-6 vertex using the Lagrangian multiplier method",
+      "Verified the predicted folding paths with laser-cut panel prototypes"],
+    tags:["Kinematic analysis","AutoCAD","Laser cutting"] },
+
+  { kicker:"POSTECH · 2025 – Present", pattern:"hinge", img:"images/proj-actuator.jpg",
+    title:"Origami-based Pneumatic Actuator for Satellite Missions",
+    bullets:[
+      "Developed a propellant-driven micro pneumatic actuator based on a thickness-accommodated Kresling pattern",
+      "Evaluated the structural rigidity of the inflated actuator across geometric parameters via cantilever and compression tests",
+      "Built with Lab-on-PCB fabrication in collaboration with the actuator team"],
+    tags:["Stiffness","Parametric study","Soft actuator"] },
+
+  { kicker:"POSTECH · 2025", pattern:"strip", img:"images/proj-rolling.jpg",
+    title:"Work Roll Crown Control in 4-High Hot Rolling Mills",
+    bullets:[
+      "Developed a numerical model of roll profile based on slit-beam deformation theory",
+      "Demonstrated the prediction formulas against finite element analysis"],
+    tags:["Numerical modelling","FE analysis"] },
+
+  { kicker:"Extreme Mechanics Lab × SeAH Wind · Apr. – May 2025", pattern:"sheet", img:"images/proj-monopile.jpg",
+    title:"Monopile Deformation on Growing Line Support Setup",
+    bullets:[
+      "Parametric study of plastic deformation in wind turbine monopiles under various turning roll setups using Abaqus",
+      "Optimized the turning roll arrangement to minimize plastic deformation"],
+    tags:["Structural analysis","Abaqus"] },
+
+  { kicker:"Handong Global University · 2023", pattern:"cell", img:"images/proj-shoulder.jpg",
+    title:"Elastic Resistance and Shoulder Movement Patterns in Reaching Tasks",
+    bullets:[
+      "Investigated the effect of elastic resistance on proprioception during reaching motion",
+      "Analyzed kinematic motion by integrating IMU and vision sensor data"],
+    tags:["Proprioception","IMU","Motion analysis"] }
+];
+
+/* ═══ 도면 그래픽(사진이 없을 때 자동 표시) ═══ */
 function artwork(kind){
   const M="#C33A25", V="#1F4FA8", G="#39424D";
   let s=`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="500" fill="#10141A"/><g stroke="${G}" stroke-width=".6" opacity=".5">`;
@@ -411,14 +488,12 @@ function artwork(kind){
     for(let r=0;r<3;r++)for(let c=0;c<4;c++){
       const cx=150+c*168,cy=125+r*125,w=72,h=48;
       s+=`<path d="M${cx} ${cy-h} L${cx+w} ${cy} L${cx} ${cy+h} L${cx-w} ${cy} Z" stroke="${M}" stroke-width="2.2"/>
-          <line x1="${cx-w}" y1="${cy}" x2="${cx+w}" y2="${cy}" stroke="${V}" stroke-width="1.6" stroke-dasharray="7 5"/>`;
-    }
+          <line x1="${cx-w}" y1="${cy}" x2="${cx+w}" y2="${cy}" stroke="${V}" stroke-width="1.6" stroke-dasharray="7 5"/>`;}
   }else if(kind==="cell"){
     for(let r=0;r<3;r++)for(let c=0;c<5;c++){
       const x=120+c*140,y=110+r*130,k=(r+c)%2?20:-20;
       s+=`<path d="M${x} ${y} L${x+52+k} ${y+40} L${x} ${y+80} L${x-52-k} ${y+40} Z" stroke="${M}" stroke-width="2"/>
-          <line x1="${x}" y1="${y}" x2="${x}" y2="${y+80}" stroke="${V}" stroke-width="1.5" stroke-dasharray="6 5"/>`;
-    }
+          <line x1="${x}" y1="${y}" x2="${x}" y2="${y+80}" stroke="${V}" stroke-width="1.5" stroke-dasharray="6 5"/>`;}
   }else if(kind==="strip"){
     for(let i=0;i<9;i++){const x=70+i*78,up=i%2===0;
       s+=`<path d="M${x} ${up?160:330} L${x+78} ${up?330:160}" stroke="${up?M:V}" stroke-width="2.4" ${up?"":'stroke-dasharray="8 6"'}/>`;}
@@ -436,73 +511,78 @@ function artwork(kind){
   }
   return s+`</g></svg>`;
 }
-function figure(t){
+function figureNode(item){
   const box=document.createElement("div");
-  box.innerHTML=artwork(t.pattern);
-  if(t.img){
+  box.className="fig";
+  box.innerHTML=artwork(item.pattern);
+  if(item.img){
     const im=new Image();
     im.onload=()=>{box.innerHTML="";box.appendChild(im);};
-    im.alt=t.title; im.src=t.img;
+    im.alt=item.title; im.src=item.img;
   }
   return box;
 }
 
-/* ─ 프로필 사진 ─ */
+/* 프로필 사진 */
 const pf=document.getElementById("profile");
 pf.addEventListener("load",()=>{pf.style.display="block";pf.previousElementSibling.style.display="none";});
 
-/* ─ Research Interests 페이지 ─ */
-const topicList=document.getElementById("topicList");
-TOPICS.forEach((t,i)=>{
+/* Research Interests 페이지 */
+const iList=document.getElementById("interestList");
+INTERESTS.forEach((t,i)=>{
   const row=document.createElement("article");
-  row.className="topic"; row.id="t"+i;
-  const fig=document.createElement("div"); fig.className="fig";
-  fig.appendChild(figure(t).firstChild);
+  row.className="topic"; row.id="i"+i;
   const txt=document.createElement("div");
   txt.innerHTML=`<p class="k">${t.kicker}</p><h3>${t.title}</h3><p>${t.detail}</p>
     <ul class="tags">${t.tags.map(k=>`<li>${k}</li>`).join("")}</ul>`;
-  row.append(fig,txt); topicList.appendChild(row);
+  row.append(figureNode(t),txt); iList.appendChild(row);
 });
 
-/* ─ Research Experiences 페이지 ─ */
-const expList=document.getElementById("expList");
-EXPERIENCES.forEach(e=>{
+/* Research Experiences 페이지 */
+const posList=document.getElementById("posList");
+POSITIONS.forEach(p=>{
   const li=document.createElement("li");
-  li.innerHTML=`<p class="when">${e.when}</p><h3>${e.role}</h3>
-    <p class="where">${e.where}</p><p class="desc">${e.desc}</p>
-    ${e.fund?`<span class="fund">${e.fund}</span>`:""}`;
-  expList.appendChild(li);
+  li.innerHTML=`<p class="when">${p.when}</p><h3>${p.role}</h3><p class="w">${p.where}</p>`;
+  posList.appendChild(li);
+});
+const projList=document.getElementById("projList");
+PROJECTS.forEach(p=>{
+  const row=document.createElement("article");
+  row.className="topic";
+  const txt=document.createElement("div");
+  txt.innerHTML=`<p class="meta">${p.kicker}</p><h3>${p.title}</h3>
+    <ul class="bul">${p.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>
+    <ul class="tags">${p.tags.map(k=>`<li>${k}</li>`).join("")}</ul>`;
+  row.append(figureNode(p),txt); projList.appendChild(row);
 });
 
-/* ─ 홈 슬라이드(끊김 없이 흐름) ─ */
+/* 홈 슬라이드 */
 const reel=document.getElementById("reel"), strip=document.getElementById("strip");
 function buildCards(){
-  TOPICS.forEach((t,i)=>{
+  INTERESTS.forEach((t,i)=>{
     const a=document.createElement("a");
     a.className="rcard"; a.href="#/interests";
-    a.dataset.idx=i;
-    const th=document.createElement("div"); th.className="thumb";
-    th.appendChild(figure(t).firstChild);
+    const th=figureNode(t); th.className="thumb";
     const b=document.createElement("div"); b.className="body";
     b.innerHTML=`<p class="k">${t.kicker}</p><h4>${t.title}</h4><p>${t.body}</p>`;
     a.append(th,b); reel.appendChild(a);
   });
 }
-buildCards(); buildCards();   // 두 벌을 이어 붙여 무한 반복
+buildCards(); buildCards(); buildCards();   // 이어 붙여 끊김 없이 반복
 
-const SPEED = 24;   // 흐르는 속도(px/초). 숫자를 키우면 빨라집니다
-const DIR   = -1;   // -1: 카드가 왼쪽으로 흐름 / 1: 오른쪽으로 흐름
+const SPEED = 24;   // 흐르는 속도(px/초)
+const DIR   = -1;   // -1: 왼쪽으로 흐름 / 1: 오른쪽으로 흐름
 let x=0, tween=0, hold=false, prev=0;
 const slow = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function loop(now){
   const dt = prev ? Math.min((now-prev)/1000,.05) : 0; prev=now;
-  const half = reel.scrollWidth/2;
-  if(half>0){
+  const unit = reel.scrollWidth/3;
+  if(unit>0){
     if(!hold && !slow) x += DIR*SPEED*dt;
     const step = tween*0.12; x += step; tween -= step;
-    if(x <= -half) x += half;
-    if(x >= 0)     x -= half;
+    if(x <= -unit) x += unit;
+    if(x >= 0)     x -= unit;
     reel.style.transform = `translateX(${x}px)`;
   }
   requestAnimationFrame(loop);
@@ -511,8 +591,8 @@ requestAnimationFrame(loop);
 
 strip.addEventListener("mouseenter",()=>hold=true);
 strip.addEventListener("mouseleave",()=>hold=false);
-document.getElementById("left").addEventListener("click",()=>tween += 350);
-document.getElementById("right").addEventListener("click",()=>tween -= 350);
+document.getElementById("left").addEventListener("click",()=>tween += 358);
+document.getElementById("right").addEventListener("click",()=>tween -= 358);
 
 let sx=null, moved=0;
 strip.addEventListener("pointerdown",e=>{sx=e.clientX;moved=0;hold=true;strip.classList.add("drag")});
@@ -526,7 +606,7 @@ strip.addEventListener("pointercancel",endDrag);
 strip.addEventListener("pointerleave",endDrag);
 reel.addEventListener("click",e=>{ if(moved>6) e.preventDefault(); });
 
-/* ─ 페이지 전환 ─ */
+/* 페이지 전환 */
 const pages=[...document.querySelectorAll(".page")];
 const navs=[...document.querySelectorAll("[data-p]")];
 function route(){
@@ -534,16 +614,16 @@ function route(){
   const target=document.getElementById(id)?id:"home";
   pages.forEach(p=>p.classList.toggle("on",p.id===target));
   navs.forEach(a=>a.classList.toggle("on",a.dataset.p===target));
-  document.getElementById("drop").classList.toggle("on",target==="experiences"||target==="interests");
-  document.getElementById("drop").classList.remove("open");
+  const d=document.getElementById("drop");
+  d.classList.toggle("on",target==="experiences"||target==="interests");
+  d.classList.remove("open");
   window.scrollTo(0,0);
-  document.title = target==="home" ? "홍길동 | Gildong Hong"
-    : navs.find(a=>a.dataset.p===target).textContent + " | 홍길동";
+  document.title = target==="home" ? "Duwon Yang | Extreme Mechanics Lab, POSTECH"
+    : navs.find(a=>a.dataset.p===target).textContent + " | Duwon Yang";
 }
 addEventListener("hashchange",route);
 route();
 
-/* 드롭다운(터치 기기 대응) */
 const drop=document.getElementById("drop");
 document.getElementById("dbtn").addEventListener("click",e=>{
   e.stopPropagation();
