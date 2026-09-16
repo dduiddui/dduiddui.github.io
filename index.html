@@ -147,7 +147,7 @@ p{max-width:74ch}
 .badge{display:inline-block;font-size:11.5px;border:1px solid var(--valley);color:var(--valley);
   border-radius:3px;padding:1px 8px;margin-left:8px;vertical-align:1.5px;white-space:nowrap}
 .badge.ok{border-color:var(--mountain);color:var(--mountain)}
-.me{font-weight:600;color:var(--ink)}
+.me{font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--mountain);padding-bottom:1px}
 
 /* Awards */
 .awards{list-style:none;padding:0;margin:0;counter-reset:a}
@@ -351,20 +351,20 @@ p{max-width:74ch}
     <ol class="pubs">
       <li>
         <div>
-          <h4><span class="me">Duwon Yang</span>, Seungmin Kim, and Anna Lee*<span class="badge">In preparation</span></h4>
+          <h4><span class="me">D. Yang</span>, S. Kim, and A. Lee*<span class="badge">In preparation</span></h4>
           <p class="venue">Bi-Directional Folding of Diamond-Vertex Thick-Panel Origami for Reconfigurable Structures</p>
         </div>
       </li>
       <li>
         <div>
-          <h4>Jeongrak Lee<sup>+</sup>, Seonghyeon Kim<sup>+</sup>, <span class="me">Duwon Yang</span>, Minsoo Kim, and Anna Lee*<span class="badge">In preparation</span></h4>
+          <h4>J. Lee<sup>+</sup>, S. Kim<sup>+</sup>, <span class="me">D. Yang</span>, M. Kim, and A. Lee*<span class="badge">In preparation</span></h4>
           <p class="venue">Design and development of a propellant-driven micro pneumatic actuator using Lab-on-PCB technology
             <em style="display:block;font-size:13px;margin-top:3px">+ equally contributed</em></p>
         </div>
       </li>
       <li>
         <div>
-          <h4>Gyuseok Shim, <span class="me">Duwon Yang</span><sup>†</sup>, Woorim Cho<sup>†</sup>, Jihyeon Kim, Hyangshin Ryu*, Woong Choi*, and Jaehyo Kim*<span class="badge ok">2024</span></h4>
+          <h4>G. Shim, <span class="me">D. Yang</span><sup>†</sup>, W. Cho<sup>†</sup>, J. Kim, H. Ryu*, W. Choi*, and J. Kim*<span class="badge ok">2024</span></h4>
           <p class="venue">Elastic Resistance and Shoulder Movement Patterns: An Analysis of Reaching Tasks Based on Proprioception —
             <em>Bioengineering</em>, vol. 11, no. 1, p. 1
             <em style="display:block;font-size:13px;margin-top:3px">† equally contributed</em></p>
@@ -376,7 +376,7 @@ p{max-width:74ch}
     <ol class="pubs">
       <li>
         <div>
-          <h4>Hyunsu Kwak<sup>*</sup>, Junsik Kim<sup>*</sup>, <span class="me">Duwon Yang</span>, Gyosik Jun, Yongseok Cho, and Anna Lee<sup>#</sup><span class="badge ok">2026</span></h4>
+          <h4>H. Kwak<sup>*</sup>, J. Kim<sup>*</sup>, <span class="me">D. Yang</span>, G. Jun, Y. Cho, and A. Lee<sup>#</sup><span class="badge ok">2026</span></h4>
           <p class="venue">Development of Mathematical and Finite Element Models for Predicting Work-roll Deformation in a 4-high Hot Rolling Mill —
             <em>Transactions of Materials Processing</em>, vol. 35, no. 1
             <em style="display:block;font-size:13px;margin-top:3px">* equally contributed</em></p>
@@ -388,14 +388,14 @@ p{max-width:74ch}
     <ol class="pubs">
       <li>
         <div>
-          <h4><span class="me">Duwon Yang</span>, and Anna Lee*<span class="badge ok">2025</span></h4>
+          <h4><span class="me">D. Yang</span>, and A. Lee*<span class="badge ok">2025</span></h4>
           <p class="venue">Thickness-accommodating method for multi-configurable thick origami with bidirectional folding —
             <em>International Conference on Precision Engineering and Sustainable Manufacturing</em>, Chiang Mai, Thailand, July 2025</p>
         </div>
       </li>
       <li>
         <div>
-          <h4>Seonghyeon Kim, Jeongrak Lee, <span class="me">Duwon Yang</span>, Minsoo Kim, and Anna Lee<span class="badge ok">2025</span></h4>
+          <h4>S. Kim, J. Lee, <span class="me">D. Yang</span>, M. Kim, and A. Lee<span class="badge ok">2025</span></h4>
           <p class="venue">Development of a micro pneumatic actuator driven by propellant utilizing Lab-on-PCB technology —
             <em>KSME Annual Meeting</em> (80th Anniversary), Korean Society of Mechanical Engineers, 2025</p>
         </div>
@@ -464,7 +464,7 @@ const PROJECTS = [
     approach:"I proposed the extended offset crease method, which alternates the clearance gaps across the two faces of the membrane and introduces a folding mode termed pleat folding. Pleat folding absorbs the thickness asymmetry of a degree-4 vertex at uniform crease width, so the symmetric profile of the pattern survives thickening. The folding paths of the resulting modes are traced with an energy-based incremental formulation that combines the Lagrange multiplier method with nullspace projection.",
     outcome:"Applied to the diamond vertex, the method yields four folding modes, each realizable in either direction. A recessed pyramidal origami (RPO) tessellation prototype, fabricated by laser-cutting perforated hinge lines on thin membranes, reaches ten flat-folded configurations, and the state vector enumerates 140 distinct deployed configurations from a single crease pattern.",
     tags:["Extended offset crease","Pleat folding","Lagrange multiplier","Nullspace projection","RPO tessellation"],
-    ref:"Duwon Yang, Seungmin Kim, Anna Lee* — manuscript in preparation" },
+    ref:"<span class='me'>D. Yang</span>, S. Kim, A. Lee* — manuscript in preparation" },
 
   { kicker:"POSTECH · Extreme Mechanics Lab · 2025 – Present", badge:"In preparation",
     pattern:"hinge", img:"images/proj-actuator.jpg",
@@ -473,7 +473,7 @@ const PROJECTS = [
     approach:"I developed a micro pneumatic actuator built on a thickness-accommodated Kresling pattern, driven by high-energy-density propellant generated on a Lab-on-PCB platform rather than by an external pump.",
     outcome:"Cantilever and compression tests across geometric parameters showed how the geometry governs the rigidity of the inflated actuator, giving concrete design guidance for the pattern.",
     tags:["Kresling pattern","Stiffness","Parametric study","Soft actuator"],
-    ref:"Jeongrak Lee, Seonghyeon Kim, Duwon Yang, Minsoo Kim, Anna Lee* — in preparation; related work presented at the KSME 2025 Annual Meeting" },
+    ref:"J. Lee, S. Kim, <span class='me'>D. Yang</span>, M. Kim, A. Lee* — in preparation; related work presented at the KSME 2025 Annual Meeting" },
 
   { kicker:"POSTECH · Extreme Mechanics Lab × POSCO · 2025", badge:"Published",
     pattern:"strip", img:"images/proj-rolling.jpg",
@@ -482,7 +482,7 @@ const PROJECTS = [
     approach:"We extended the Shohet–Townsend slit-beam deflection model so that all of these effects enter one system of equations, and linearized the nonlinear flattening term with a first-order Taylor expansion so the system can be solved directly. An ABAQUS half-model of the 4-high stand was built to verify the predictions.",
     outcome:"The linearized model reproduces FEM with R² above 0.996 for the contact force distribution and above 0.994 for roll deflection across flat, center and edge loading, while running more than ten times faster than the Newton–Raphson solution. Initial crown shape governs deformation at the millimetre scale, whereas bender force controls the edge region at roughly 0.1 mm — the two act as complementary handles for crown control.",
     tags:["Slit-beam model","Taylor linearization","Abaqus","Crown control"],
-    ref:"H. S. Kwak, J. S. Kim, D. W. Yang, G. S. Jun, Y. S. Cho, A. Lee* — Transactions of Materials Processing, 35(1), 2026" },
+    ref:"H. Kwak, J. Kim, <span class='me'>D. Yang</span>, G. Jun, Y. Cho, A. Lee* — Transactions of Materials Processing, 35(1), 2026" },
 
   { kicker:"POSTECH · Extreme Mechanics Lab × SeAH Wind · Apr. – May 2025",
     pattern:"sheet", img:"images/proj-monopile.jpg",
@@ -491,7 +491,7 @@ const PROJECTS = [
     approach:"I built an ABAQUS shell model of the monopile on rigid turning rolls — quadratic shell elements, S355ML with plasticity, frictionless roller contact, and a 1.52g design load following DNV standards — ran a mesh convergence study, and compared the results support by support against the consultancy's Ansys model at identical support spacing.",
     outcome:"Peak equivalent plastic strain concentrated at the support carrying the largest share of the load and exceeded the allowable limit under the conservative frictionless assumption. Comparing the two independent models isolated roller friction and mesh density as the main sources of the discrepancy between them, and the results fed into revised support arrangements for the grow line.",
     tags:["Abaqus","Shell model","Plastic strain","Mesh convergence"],
-    ref:"Junsik Kim, Duwon Yang, Kanghyun Ki, Anna Lee — industry project with SeAH Wind" },
+    ref:"J. Kim, <span class='me'>D. Yang</span>, K. Ki, A. Lee — industry project with SeAH Wind" },
 
   { kicker:"Handong Global University · Human Robotics Lab · 2023", badge:"Published",
     pattern:"cell", img:"images/proj-shoulder.jpg",
@@ -500,7 +500,7 @@ const PROJECTS = [
     approach:"Thirty participants performed band shoulder presses at low, moderate and high intensity without visual feedback, paced by a metronome. Motion was recorded with an RGB camera and reconstructed with OpenPose, which was validated against inertial measurement units worn on both forearms.",
     outcome:"Reach speed, return speed and range of motion remained symmetric between the dominant and non-dominant hands at every intensity. The velocity profile was asymmetric: reach duration held at 1.15 s regardless of load while return duration lengthened with it, suggesting deliberate deceleration generated by the brain's internal model. OpenPose agreed with the IMU measurements at a correlation coefficient of 0.99.",
     tags:["Proprioception","OpenPose","IMU","Motion analysis"],
-    ref:"G. Shim, D. Yang†, W. Cho†, J. Kim, H. Ryu*, W. Choi*, J. Kim* — Bioengineering, 11(1), 1, 2024 († equal contribution)" }
+    ref:"G. Shim, <span class='me'>D. Yang</span>†, W. Cho†, J. Kim, H. Ryu*, W. Choi*, J. Kim* — Bioengineering, 11(1), 1, 2024 († equal contribution)" }
 ];
 
 /* ═══ 도면 그래픽(사진이 없을 때 자동 표시) ═══ */
