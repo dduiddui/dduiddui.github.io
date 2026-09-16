@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Duwon Yang | Extreme Mechanics Lab, POSTECH</title>
 <meta name="description" content="Duwon Yang — M.S. candidate in Mechanical Engineering at POSTECH. Thick-panel origami, reconfigurable structures, load-bearing origami.">
+<meta name="author" content="Duwon Yang">
+<link rel="canonical" href="https://dduiddui.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Duwon Yang | Extreme Mechanics Lab, POSTECH">
+<meta property="og:description" content="M.S. candidate in Mechanical Engineering at POSTECH. Thick-panel origami, reconfigurable structures, load-bearing origami.">
+<meta property="og:url" content="https://dduiddui.github.io/">
+<meta property="og:image" content="https://dduiddui.github.io/images/proj-bifoldable.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFCFA'/><path d='M16 5 L27 16 L16 27 L5 16 Z' fill='none' stroke='%23C33A25' stroke-width='2.4'/><line x1='5' y1='16' x2='27' y2='16' stroke='%231F4FA8' stroke-width='1.8' stroke-dasharray='3 2'/></svg>">
 
 <!-- ─────────────────────────────────────────────────────────────
    수정 위치 (내용은 모두 영어)
@@ -22,7 +31,7 @@
 <style>
 :root{
   --paper:#FCFCFA; --panel:#E4E2DC; --ink:#171C22; --soft:#3A424C;
-  --graphite:#717A85; --mountain:#C33A25; --valley:#1F4FA8;
+  --graphite:#717A85; --mountain:#C33A25; --valley:#1F4FA8; --live:#2F8A4E;
   --sans:"IBM Plex Sans",system-ui,sans-serif;
   --disp:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;
 }
@@ -97,7 +106,7 @@ p{max-width:74ch}
   cursor:pointer;display:grid;place-items:center;color:var(--soft);transition:.16s}
 .nudge button:hover{border-color:var(--mountain);color:var(--mountain)}
 .nudge svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9}
-.strip{position:relative;width:100vw;margin:22px 0 0 calc(50% - 50vw);overflow:hidden;cursor:grab}
+.strip{position:relative;width:100vw;margin:22px 0 0 calc(50% - 50vw);overflow:hidden;cursor:grab;touch-action:pan-y}
 .strip.drag{cursor:grabbing}
 .strip::before,.strip::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:3;pointer-events:none}
 .strip::before{left:0;background:linear-gradient(90deg,var(--paper),rgba(252,252,250,0))}
@@ -106,7 +115,8 @@ p{max-width:74ch}
 .rcard{flex:0 0 340px;border:1px solid var(--panel);background:#fff;text-decoration:none;color:inherit;display:block;transition:border-color .18s}
 .rcard:hover{border-color:var(--mountain)}
 .rcard .thumb{aspect-ratio:16/10;background:#10141A;overflow:hidden}
-.rcard .thumb svg,.rcard .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.rcard .thumb svg{width:100%;height:100%;object-fit:cover;display:block}
+.rcard .thumb img{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
 .rcard .body{padding:16px 18px 18px}
 .rcard .k{font-size:12px;letter-spacing:.09em;color:var(--mountain);margin:0 0 7px}
 .rcard h4{font-family:var(--disp);font-size:17px;font-weight:600;margin:0 0 7px;line-height:1.3}
@@ -116,7 +126,8 @@ p{max-width:74ch}
 .topic{display:grid;grid-template-columns:400px 1fr;gap:34px;align-items:start;padding:34px 0;border-top:1px solid var(--panel)}
 .topic:first-of-type{border-top:0;padding-top:4px}
 .fig{background:#10141A;aspect-ratio:16/10;overflow:hidden}
-.fig svg,.fig img{width:100%;height:100%;object-fit:cover;display:block}
+.fig svg{width:100%;height:100%;object-fit:cover;display:block}
+.fig img{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
 .k{font-size:12.5px;letter-spacing:.09em;color:var(--mountain);margin:0 0 8px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;list-style:none;padding:0;margin:14px 0 0}
 .tags li{font-size:12.5px;color:var(--valley);border:1px solid var(--panel);border-radius:100px;padding:3px 11px}
@@ -132,6 +143,7 @@ p{max-width:74ch}
 .pos li{position:relative;padding:0 0 30px 26px}
 .pos li::before{content:"";position:absolute;left:-6px;top:10px;width:10px;height:10px;border-radius:50%;
   background:var(--paper);border:2px solid var(--valley)}
+.pos li.now::before{background:var(--live);border-color:var(--live);box-shadow:0 0 0 4px rgba(47,138,78,.16)}
 .pos .when{font-family:var(--disp);font-size:14px;color:var(--graphite);margin:0 0 3px}
 .pos p.w{font-size:14.5px;color:var(--soft);margin:0}
 .pos p.w b{font-weight:500;color:var(--ink)}
@@ -147,6 +159,8 @@ p{max-width:74ch}
 .badge{display:inline-block;font-size:11.5px;border:1px solid var(--valley);color:var(--valley);
   border-radius:3px;padding:1px 8px;margin-left:8px;vertical-align:1.5px;white-space:nowrap}
 .badge.ok{border-color:var(--mountain);color:var(--mountain)}
+.doi{display:inline-block;margin-top:6px;font-size:13px;color:var(--valley);text-decoration:none;border-bottom:1px solid var(--panel)}
+.doi:hover{border-bottom-color:var(--valley)}
 .me{font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--mountain);padding-bottom:1px}
 
 /* Awards */
@@ -219,11 +233,12 @@ p{max-width:74ch}
         <p class="affil">Extreme Mechanics Lab, Department of Mechanical Engineering, POSTECH, Pohang, Korea</p>
 
         <ul class="links">
-          <li><a href="#">Google Scholar</a></li>
-          <li><a href="#">ResearchGate</a></li>
-          <li><a href="#">ORCID</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">CV (PDF)</a></li>
+          <li><a href="cv.pdf">CV (PDF)</a></li>
+          <!-- 링크를 추가할 때는 아래 형식으로 위 목록 안에 넣으세요.
+          <li><a href="https://www.linkedin.com/in/사용자이름" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">ORCID</a></li>
+          <li><a href="https://scholar.google.com/citations?user=xxxx" target="_blank" rel="noopener">Google Scholar</a></li>
+          -->
         </ul>
 
         <p class="lede">I am an M.S. candidate in <span class="hl">Mechanical Engineering</span> at POSTECH.</p>
@@ -235,8 +250,8 @@ p{max-width:74ch}
         <p class="hd">Education</p>
         <ul class="edu">
           <li>
-            <span class="y">Mar. 2025 – Present</span>
-            <span>M.S. in Mechanical Engineering, POSTECH
+            <span class="y">Mar. 2025 – Feb. 2027</span>
+            <span>M.S. in Mechanical Engineering, POSTECH <span style="color:var(--graphite);font-size:13.5px">(expected)</span>
               <span class="d">Extreme Mechanics Lab · Advisor: Prof. Anna Lee</span></span>
           </li>
           <li>
@@ -299,7 +314,7 @@ p{max-width:74ch}
       <li><span class="y">CAE</span><span>Abaqus, Ansys</span></li>
       <li><span class="y">Programming</span><span>C, MATLAB, Python, LaTeX</span></li>
       <li><span class="y">Experiment</span><span>Laser cutting, molding, mechanical testing (Instron)</span></li>
-      <li><span class="y">Languages</span><span>Korean (native), English (intermediate)</span></li>
+      <li><span class="y">Languages</span><span>Korean, English</span></li>
     </ul>
 
     <hr class="rule">
@@ -368,6 +383,7 @@ p{max-width:74ch}
           <p class="venue">Elastic Resistance and Shoulder Movement Patterns: An Analysis of Reaching Tasks Based on Proprioception —
             <em>Bioengineering</em>, vol. 11, no. 1, p. 1
             <em style="display:block;font-size:13px;margin-top:3px">† equally contributed</em></p>
+          <a class="doi" href="https://doi.org/10.3390/bioengineering11010001" target="_blank" rel="noopener">doi.org/10.3390/bioengineering11010001 ↗</a>
         </div>
       </li>
     </ol>
@@ -380,6 +396,7 @@ p{max-width:74ch}
           <p class="venue">Development of Mathematical and Finite Element Models for Predicting Work-roll Deformation in a 4-high Hot Rolling Mill —
             <em>Transactions of Materials Processing</em>, vol. 35, no. 1
             <em style="display:block;font-size:13px;margin-top:3px">* equally contributed</em></p>
+          <a class="doi" href="https://doi.org/10.5228/KSTP.2026.35.1.1" target="_blank" rel="noopener">doi.org/10.5228/KSTP.2026.35.1.1 ↗</a>
         </div>
       </li>
     </ol>
@@ -543,7 +560,12 @@ function figureNode(item){
   box.innerHTML=artwork(item.pattern);
   if(item.img){
     const im=new Image();
-    im.onload=()=>{box.innerHTML="";box.appendChild(im);};
+    im.onload=()=>{
+      box.innerHTML="";
+      im.style.objectFit="contain";      // 도면·그래프가 잘리지 않도록
+      box.style.background="#fff";
+      box.appendChild(im);
+    };
     im.alt=item.title; im.src=item.img;
   }
   return box;
@@ -568,6 +590,7 @@ INTERESTS.forEach((t,i)=>{
 const posList=document.getElementById("posList");
 POSITIONS.forEach(p=>{
   const li=document.createElement("li");
+  if(/present/i.test(p.when)) li.className="now";   // 현재 소속은 초록색 점
   li.innerHTML=`<p class="when">${p.when}</p><h3>${p.role}</h3><p class="w">${p.where}</p>`;
   posList.appendChild(li);
 });
