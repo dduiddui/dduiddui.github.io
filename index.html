@@ -124,6 +124,7 @@ p{max-width:74ch}
 .cao .row{display:grid;grid-template-columns:98px 1fr;gap:18px;padding:12px 0;border-bottom:1px solid var(--panel)}
 .cao dt{font-family:var(--disp);font-size:11.5px;font-weight:600;letter-spacing:.12em;color:var(--graphite);padding-top:4px}
 .cao dd{margin:0;font-size:14.5px;color:var(--soft);line-height:1.65;max-width:64ch}
+.ref{font-size:13px;color:var(--graphite);margin:13px 0 0;padding-left:14px;border-left:2px solid var(--panel);max-width:64ch}
 .meta{font-size:13.5px;color:var(--graphite);margin:0 0 2px;font-family:var(--disp)}
 
 /* Positions 타임라인 */
@@ -286,8 +287,8 @@ p{max-width:74ch}
     disappears. My work is about restoring that motion in thick, load-bearing panels — and about
     getting more than one folded configuration out of a single assembly.</p>
     <p>At POSTECH I proposed an extended offset crease method that accommodates thickness while
-    keeping a degree-6 vertex foldable in two directions, and analyzed the resulting kinematics with
-    a Lagrangian multiplier formulation. I also build what I design: laser-cut panel prototypes,
+    keeping a diamond vertex foldable in two directions, and analyzed the resulting kinematics with
+    a Lagrange multiplier and nullspace projection formulation. I also build what I design: laser-cut panel prototypes,
     pneumatic actuators based on thickness-accommodated Kresling patterns, and finite element models
     for industrial structures.</p>
 
@@ -346,12 +347,12 @@ p{max-width:74ch}
     <h2>Publications</h2>
     <p class="sub">Journal articles, conference presentations and domestic papers</p>
 
-    <p class="hd">Journal Articles (SCI)</p>
+    <p class="hd">Journal Articles</p>
     <ol class="pubs">
       <li>
         <div>
-          <h4><span class="me">Duwon Yang</span>, and Anna Lee*<span class="badge">In preparation</span></h4>
-          <p class="venue">Bi-foldable thick panel origami for reconfigurable structures</p>
+          <h4><span class="me">Duwon Yang</span>, Seungmin Kim, and Anna Lee*<span class="badge">In preparation</span></h4>
+          <p class="venue">Bi-Directional Folding of Diamond-Vertex Thick-Panel Origami for Reconfigurable Structures</p>
         </div>
       </li>
       <li>
@@ -361,26 +362,42 @@ p{max-width:74ch}
             <em style="display:block;font-size:13px;margin-top:3px">+ equally contributed</em></p>
         </div>
       </li>
-    </ol>
-
-    <p class="hd">International Conferences</p>
-    <ol class="pubs">
       <li>
         <div>
-          <h4><span class="me">Duwon Yang</span>, and Anna Lee*</h4>
-          <p class="venue">Thickness-accommodating method for multi-configurable thick origami with bidirectional folding —
-            <em>International Conference on Precision Engineering and Sustainable Manufacturing</em>, Chiang Mai, Thailand, July 2025</p>
+          <h4>Gyuseok Shim, <span class="me">Duwon Yang</span><sup>†</sup>, Woorim Cho<sup>†</sup>, Jihyeon Kim, Hyangshin Ryu*, Woong Choi*, and Jaehyo Kim*<span class="badge ok">2024</span></h4>
+          <p class="venue">Elastic Resistance and Shoulder Movement Patterns: An Analysis of Reaching Tasks Based on Proprioception —
+            <em>Bioengineering</em>, vol. 11, no. 1, p. 1
+            <em style="display:block;font-size:13px;margin-top:3px">† equally contributed</em></p>
         </div>
       </li>
     </ol>
 
-    <p class="hd">Domestic Publications</p>
+    <p class="hd">Domestic Journal</p>
     <ol class="pubs">
       <li>
         <div>
-          <h4>Hyunsu Kwak, Junsik Kim, <span class="me">Duwon Yang</span>, and Anna Lee*<span class="badge ok">Accepted</span></h4>
-          <p class="venue">Roll profile prediction formulas and FE analysis models for controlling work roll crown in 4-high hot rolling mills —
-            <em>Transactions of Materials Processing</em></p>
+          <h4>Hyunsu Kwak<sup>*</sup>, Junsik Kim<sup>*</sup>, <span class="me">Duwon Yang</span>, Gyosik Jun, Yongseok Cho, and Anna Lee<sup>#</sup><span class="badge ok">2026</span></h4>
+          <p class="venue">Development of Mathematical and Finite Element Models for Predicting Work-roll Deformation in a 4-high Hot Rolling Mill —
+            <em>Transactions of Materials Processing</em>, vol. 35, no. 1
+            <em style="display:block;font-size:13px;margin-top:3px">* equally contributed</em></p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="hd">Conference Presentations</p>
+    <ol class="pubs">
+      <li>
+        <div>
+          <h4><span class="me">Duwon Yang</span>, and Anna Lee*<span class="badge ok">2025</span></h4>
+          <p class="venue">Thickness-accommodating method for multi-configurable thick origami with bidirectional folding —
+            <em>International Conference on Precision Engineering and Sustainable Manufacturing</em>, Chiang Mai, Thailand, July 2025</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Seonghyeon Kim, Jeongrak Lee, <span class="me">Duwon Yang</span>, Minsoo Kim, and Anna Lee<span class="badge ok">2025</span></h4>
+          <p class="venue">Development of a micro pneumatic actuator driven by propellant utilizing Lab-on-PCB technology —
+            <em>KSME Annual Meeting</em> (80th Anniversary), Korean Society of Mechanical Engineers, 2025</p>
         </div>
       </li>
     </ol>
@@ -414,9 +431,9 @@ p{max-width:74ch}
 const INTERESTS = [
   { kicker:"Thick-Panel Origami", pattern:"diamond", img:"images/thick-panel-origami.jpg",
     title:"Thick-Panel Origami Design and Optimization",
-    body:"Restoring foldability once panels carry real thickness, and reaching several stable configurations from one assembly.",
-    tags:["Extended offset crease","Bi-foldability","Multi-configurable"],
-    detail:"Zero-thickness crease patterns lose their single degree of freedom as soon as the facets are given real thickness. I proposed an extended offset crease method that accommodates thickness while preserving the folding motion, and applied it so that one panel assembly folds in two directions and settles into multiple configurations. Geometry — sector angles, panel thickness, hinge offsets — is treated as the design space, and candidate patterns are screened before anything is cut." },
+    body:"Restoring foldability once panels carry real thickness, and reaching several configurations from one crease pattern.",
+    tags:["Extended offset crease","Pleat folding","Bi-foldability"],
+    detail:"Zero-thickness crease patterns lose their intended motion as soon as the facets are given real thickness, and the conventional fixes break the symmetry of the pattern. The extended offset crease method alternates the clearance gaps across the two faces of the membrane, producing a pleat folding mode that absorbs the thickness overlap at uniform crease width. Geometry — sector angles, panel thickness, hinge offsets — is the design space, and candidate patterns are screened before anything is cut." },
 
   { kicker:"Reconfigurable Actuation", pattern:"hinge", img:"images/buckling-actuator.jpg",
     title:"Buckling-Induced Actuator for Reconfigurable Robots",
@@ -427,8 +444,8 @@ const INTERESTS = [
   { kicker:"Kinematics & Mechanics", pattern:"cell", img:"images/origami-kinematics.jpg",
     title:"Kinematics and Mechanics of Origami-based Structures",
     body:"Analytical models for thickened vertices and the load-bearing behaviour of folded assemblies.",
-    tags:["Degree-6 vertex","Lagrangian multiplier","Load-bearing origami"],
-    detail:"A thickened vertex is a constrained mechanism, not a sheet, so its motion has to be derived rather than assumed. I analyze the kinematics of thickened degree-6 vertices using a Lagrangian multiplier formulation, tracking how many degrees of freedom survive and where panels interfere along the folding path. The same models tell us how much load a folded assembly can carry once it is deployed." }
+    tags:["Diamond vertex","Lagrange multiplier","Nullspace projection"],
+    detail:"A thickened vertex is a constrained mechanism, not a sheet, so its motion has to be derived rather than assumed. I trace folding paths with an energy-based incremental formulation that combines the Lagrange multiplier method with nullspace projection, following the branch along which the elastic energy decreases most rapidly and tracking where panels interfere along the way. The same models tell us how much load a folded assembly can carry once it is deployed." }
 ];
 
 /* ═══ ③ Research Experiences ═══ */
@@ -440,40 +457,50 @@ const POSITIONS = [
 ];
 
 const PROJECTS = [
-  { kicker:"POSTECH · 2025 – Present", pattern:"diamond", img:"images/proj-bifoldable.jpg",
-    title:"Bi-foldable Thick Panel Origami for Multi-configurable Systems",
-    challenge:"A crease pattern that folds cleanly on paper loses its single degree of freedom once the facets are given real thickness, and a thickened assembly rarely offers more than one folded state.",
-    approach:"I proposed the extended offset crease method, a thickness-accommodating scheme that keeps the folding motion alive, and derived the kinematics of a thickened degree-6 vertex using a Lagrangian multiplier formulation.",
-    outcome:"A single panel assembly folds in two directions and settles into multiple configurations. The predicted folding paths were reproduced in laser-cut panel prototypes.",
-    tags:["Kinematic analysis","AutoCAD","Laser cutting"] },
+  { kicker:"POSTECH · Extreme Mechanics Lab · 2025 – Present", badge:"In preparation",
+    pattern:"diamond", img:"images/proj-bifoldable.jpg",
+    title:"Bi-Directional Folding of Diamond-Vertex Thick-Panel Origami for Reconfigurable Structures",
+    challenge:"The diamond vertex folds as both a degree-4 and a degree-6 vertex, which makes it an attractive base unit for deployable structures — until the panels are given real thickness. Thickening a symmetric degree-4 vertex leaves the uneven panel overlap disconnected on the two sides, and the usual remedies, a wider crease block on one side or panels of non-uniform thickness, break the symmetry of the pattern and rule out folding in both directions.",
+    approach:"I proposed the extended offset crease method, which alternates the clearance gaps across the two faces of the membrane and introduces a folding mode termed pleat folding. Pleat folding absorbs the thickness asymmetry of a degree-4 vertex at uniform crease width, so the symmetric profile of the pattern survives thickening. The folding paths of the resulting modes are traced with an energy-based incremental formulation that combines the Lagrange multiplier method with nullspace projection.",
+    outcome:"Applied to the diamond vertex, the method yields four folding modes, each realizable in either direction. A recessed pyramidal origami (RPO) tessellation prototype, fabricated by laser-cutting perforated hinge lines on thin membranes, reaches ten flat-folded configurations, and the state vector enumerates 140 distinct deployed configurations from a single crease pattern.",
+    tags:["Extended offset crease","Pleat folding","Lagrange multiplier","Nullspace projection","RPO tessellation"],
+    ref:"Duwon Yang, Seungmin Kim, Anna Lee* — manuscript in preparation" },
 
-  { kicker:"POSTECH · 2025 – Present", pattern:"hinge", img:"images/proj-actuator.jpg",
+  { kicker:"POSTECH · Extreme Mechanics Lab · 2025 – Present", badge:"In preparation",
+    pattern:"hinge", img:"images/proj-actuator.jpg",
     title:"Origami-based Pneumatic Actuator for Satellite Missions",
-    challenge:"Actuators for satellite missions must pack into a small volume and still be stiff once deployed, which leaves little room for conventional motors.",
-    approach:"I developed a propellant-driven micro pneumatic actuator built on a thickness-accommodated Kresling pattern, fabricated with Lab-on-PCB technology.",
+    challenge:"Actuators for satellite missions must pack into a small volume and still be stiff once deployed, which leaves little room for conventional motors or for the pumps and power supplies that normally drive pneumatic systems.",
+    approach:"I developed a micro pneumatic actuator built on a thickness-accommodated Kresling pattern, driven by high-energy-density propellant generated on a Lab-on-PCB platform rather than by an external pump.",
     outcome:"Cantilever and compression tests across geometric parameters showed how the geometry governs the rigidity of the inflated actuator, giving concrete design guidance for the pattern.",
-    tags:["Stiffness","Parametric study","Soft actuator"] },
+    tags:["Kresling pattern","Stiffness","Parametric study","Soft actuator"],
+    ref:"Jeongrak Lee, Seonghyeon Kim, Duwon Yang, Minsoo Kim, Anna Lee* — in preparation; related work presented at the KSME 2025 Annual Meeting" },
 
-  { kicker:"POSTECH · 2025", pattern:"strip", img:"images/proj-rolling.jpg",
-    title:"Work Roll Crown Control in 4-High Hot Rolling Mills",
-    challenge:"Work roll crown decides the strip profile in hot rolling, but predicting it quickly enough to use for control is difficult with full simulation alone.",
-    approach:"I developed a numerical model of the roll profile based on slit-beam deformation theory and reduced it to prediction formulas.",
-    outcome:"The formulas were demonstrated against finite element analysis, and the work was accepted in Transactions of Materials Processing.",
-    tags:["Numerical modelling","FE analysis"] },
+  { kicker:"POSTECH · Extreme Mechanics Lab × POSCO · 2025", badge:"Published",
+    pattern:"strip", img:"images/proj-rolling.jpg",
+    title:"Work-Roll Crown Control in 4-High Hot Rolling Mills",
+    challenge:"Work-roll deformation sets the crown and flatness of hot-rolled strip. A model that captures roll deflection, backup-roll support, roll-to-strip flattening, initial crown and bender force at the same time is nonlinear, and solving it iteratively is too slow for on-line crown control.",
+    approach:"We extended the Shohet–Townsend slit-beam deflection model so that all of these effects enter one system of equations, and linearized the nonlinear flattening term with a first-order Taylor expansion so the system can be solved directly. An ABAQUS half-model of the 4-high stand was built to verify the predictions.",
+    outcome:"The linearized model reproduces FEM with R² above 0.996 for the contact force distribution and above 0.994 for roll deflection across flat, center and edge loading, while running more than ten times faster than the Newton–Raphson solution. Initial crown shape governs deformation at the millimetre scale, whereas bender force controls the edge region at roughly 0.1 mm — the two act as complementary handles for crown control.",
+    tags:["Slit-beam model","Taylor linearization","Abaqus","Crown control"],
+    ref:"H. S. Kwak, J. S. Kim, D. W. Yang, G. S. Jun, Y. S. Cho, A. Lee* — Transactions of Materials Processing, 35(1), 2026" },
 
-  { kicker:"Extreme Mechanics Lab × SeAH Wind · Apr. – May 2025", pattern:"sheet", img:"images/proj-monopile.jpg",
-    title:"Monopile Deformation on Growing Line Support Setup",
-    challenge:"Wind turbine monopiles can pick up plastic deformation during fabrication depending on how they rest on the turning rolls of the growing line.",
-    approach:"I ran a parametric study in Abaqus covering a range of turning roll setups and tracked the resulting plastic deformation.",
-    outcome:"An arrangement that minimizes plastic deformation was identified and passed to the industry partner as a support setup guideline.",
-    tags:["Structural analysis","Abaqus"] },
+  { kicker:"POSTECH · Extreme Mechanics Lab × SeAH Wind · Apr. – May 2025",
+    pattern:"sheet", img:"images/proj-monopile.jpg",
+    title:"Monopile Deformation on Grow-Line Support Setup",
+    challenge:"A 105 m offshore wind monopile weighing over 2,000 tonnes rests on three turning-roll supports while it is being fabricated, and the contact patches can yield locally. An earlier analysis by the project's engineering consultancy predicted plastic strain well above the allowable limit, so an independent model was needed before the support layout could be accepted.",
+    approach:"I built an ABAQUS shell model of the monopile on rigid turning rolls — quadratic shell elements, S355ML with plasticity, frictionless roller contact, and a 1.52g design load following DNV standards — ran a mesh convergence study, and compared the results support by support against the consultancy's Ansys model at identical support spacing.",
+    outcome:"Peak equivalent plastic strain concentrated at the support carrying the largest share of the load and exceeded the allowable limit under the conservative frictionless assumption. Comparing the two independent models isolated roller friction and mesh density as the main sources of the discrepancy between them, and the results fed into revised support arrangements for the grow line.",
+    tags:["Abaqus","Shell model","Plastic strain","Mesh convergence"],
+    ref:"Junsik Kim, Duwon Yang, Kanghyun Ki, Anna Lee — industry project with SeAH Wind" },
 
-  { kicker:"Handong Global University · 2023", pattern:"cell", img:"images/proj-shoulder.jpg",
+  { kicker:"Handong Global University · Human Robotics Lab · 2023", badge:"Published",
+    pattern:"cell", img:"images/proj-shoulder.jpg",
     title:"Elastic Resistance and Shoulder Movement Patterns in Reaching Tasks",
-    challenge:"How elastic resistance alters proprioception during a reaching task, and how that shows up in shoulder movement, was not well characterized.",
-    approach:"I set up reaching experiments under elastic resistance and analyzed the kinematics by integrating IMU and vision sensor data.",
-    outcome:"The combined measurement resolved shoulder movement patterns across resistance conditions, linking proprioceptive load to changes in reaching motion.",
-    tags:["Proprioception","IMU","Motion analysis"] }
+    challenge:"Reaching studies have largely examined the horizontal plane with visual feedback available. It was unclear whether people preserve bilateral symmetry during a vertical-plane reach against an elastic load when they cannot see their hands and must rely on proprioception alone.",
+    approach:"Thirty participants performed band shoulder presses at low, moderate and high intensity without visual feedback, paced by a metronome. Motion was recorded with an RGB camera and reconstructed with OpenPose, which was validated against inertial measurement units worn on both forearms.",
+    outcome:"Reach speed, return speed and range of motion remained symmetric between the dominant and non-dominant hands at every intensity. The velocity profile was asymmetric: reach duration held at 1.15 s regardless of load while return duration lengthened with it, suggesting deliberate deceleration generated by the brain's internal model. OpenPose agreed with the IMU measurements at a correlation coefficient of 0.99.",
+    tags:["Proprioception","OpenPose","IMU","Motion analysis"],
+    ref:"G. Shim, D. Yang†, W. Cho†, J. Kim, H. Ryu*, W. Choi*, J. Kim* — Bioengineering, 11(1), 1, 2024 († equal contribution)" }
 ];
 
 /* ═══ 도면 그래픽(사진이 없을 때 자동 표시) ═══ */
@@ -549,12 +576,14 @@ PROJECTS.forEach(p=>{
   const row=document.createElement("article");
   row.className="topic";
   const txt=document.createElement("div");
-  txt.innerHTML=`<p class="meta">${p.kicker}</p><h3>${p.title}</h3>
+  txt.innerHTML=`<p class="meta">${p.kicker}</p>
+    <h3>${p.title}${p.badge?`<span class="badge${p.badge==="Published"?" ok":""}">${p.badge}</span>`:""}</h3>
     <dl class="cao">
       <div class="row"><dt>CHALLENGE</dt><dd>${p.challenge}</dd></div>
       <div class="row"><dt>APPROACH</dt><dd>${p.approach}</dd></div>
       <div class="row"><dt>OUTCOME</dt><dd>${p.outcome}</dd></div>
     </dl>
+    ${p.ref?`<p class="ref">${p.ref}</p>`:""}
     <ul class="tags">${p.tags.map(k=>`<li>${k}</li>`).join("")}</ul>`;
   row.append(figureNode(p),txt); projList.appendChild(row);
 });
