@@ -120,9 +120,10 @@ p{max-width:74ch}
 .k{font-size:12.5px;letter-spacing:.09em;color:var(--mountain);margin:0 0 8px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;list-style:none;padding:0;margin:14px 0 0}
 .tags li{font-size:12.5px;color:var(--valley);border:1px solid var(--panel);border-radius:100px;padding:3px 11px}
-.bul{list-style:none;padding:0;margin:10px 0 0}
-.bul li{position:relative;padding-left:20px;font-size:15px;color:var(--soft);margin:0 0 6px;max-width:72ch}
-.bul li::before{content:"";position:absolute;left:0;top:11px;width:9px;border-top:2px solid var(--mountain)}
+.cao{margin:16px 0 0;border-top:1px solid var(--panel)}
+.cao .row{display:grid;grid-template-columns:98px 1fr;gap:18px;padding:12px 0;border-bottom:1px solid var(--panel)}
+.cao dt{font-family:var(--disp);font-size:11.5px;font-weight:600;letter-spacing:.12em;color:var(--graphite);padding-top:4px}
+.cao dd{margin:0;font-size:14.5px;color:var(--soft);line-height:1.65;max-width:64ch}
 .meta{font-size:13.5px;color:var(--graphite);margin:0 0 2px;font-family:var(--disp)}
 
 /* Positions 타임라인 */
@@ -171,6 +172,7 @@ p{max-width:74ch}
   .nm{font-size:31px}.nm em{font-size:18px;display:block;margin:5px 0 0}
   .topic{grid-template-columns:1fr;gap:18px}
   .edu li{grid-template-columns:1fr;gap:2px}
+  .cao .row{grid-template-columns:1fr;gap:4px}
   .striphead{padding:0 18px}
   .rcard{flex-basis:270px}
   .strip::before,.strip::after{width:36px}
@@ -211,8 +213,7 @@ p{max-width:74ch}
       <div>
         <h1 class="nm">Duwon Yang <em>양두원</em></h1>
         <p class="mail">
-          <a href="mailto:didendnjs00@postech.ac.kr">didendnjs00@postech.ac.kr</a> /
-          <a href="mailto:doonebest0730@gmail.com">doonebest0730@gmail.com</a>
+          <a href="mailto:didendnjs00@postech.ac.kr">didendnjs00@postech.ac.kr</a>
         </p>
         <p class="affil">Extreme Mechanics Lab, Department of Mechanical Engineering, POSTECH, Pohang, Korea</p>
 
@@ -253,7 +254,7 @@ p{max-width:74ch}
         mechanics of origami-based structures.</p>
         <p>Before POSTECH I received my B.S. in Mechanical &amp; Control Engineering from Handong
         Global University, where I worked as an undergraduate researcher in the Human Robotics Lab
-        under Dr. Jaehyo Kim on the analysis of human reaching motion.</p>
+        under Prof. Jaehyo Kim on the analysis of human reaching motion.</p>
       </div>
     </div>
   </div>
@@ -295,8 +296,8 @@ p{max-width:74ch}
     <ul class="edu">
       <li><span class="y">CAD</span><span>SolidWorks, AutoCAD, Illustrator</span></li>
       <li><span class="y">CAE</span><span>Abaqus, Ansys</span></li>
-      <li><span class="y">Programming</span><span>C, MATLAB, LaTeX</span></li>
-      <li><span class="y">Fabrication</span><span>Laser cutting, panel prototyping, mechanical testing</span></li>
+      <li><span class="y">Programming</span><span>C, MATLAB, Python, LaTeX</span></li>
+      <li><span class="y">Experiment</span><span>Laser cutting, molding, mechanical testing (Instron)</span></li>
       <li><span class="y">Languages</span><span>Korean (native), English (intermediate)</span></li>
     </ul>
 
@@ -309,7 +310,7 @@ p{max-width:74ch}
           <span class="d"><a href="mailto:annalee@postech.ac.kr">annalee@postech.ac.kr</a></span></span>
       </li>
       <li>
-        <span class="y">Dr. Jaehyo Kim</span>
+        <span class="y">Prof. Jaehyo Kim</span>
         <span>Human Robotics Lab, Handong Global University
           <span class="d"><a href="mailto:jhkim@handong.edu">jhkim@handong.edu</a></span></span>
       </li>
@@ -435,45 +436,43 @@ const POSITIONS = [
   { when:"Mar. 2025 – Present", role:"M.S. Candidate, Extreme Mechanics Lab",
     where:"Department of Mechanical Engineering, POSTECH, Pohang, Korea · Advisor: <b>Prof. Anna Lee</b>" },
   { when:"Jan. 2023 – Dec. 2023", role:"Undergraduate Researcher, Human Robotics Lab",
-    where:"Handong Global University, Pohang, Korea · Advisor: <b>Dr. Jaehyo Kim</b>" }
+    where:"Handong Global University, Pohang, Korea · Advisor: <b>Prof. Jaehyo Kim</b>" }
 ];
 
 const PROJECTS = [
   { kicker:"POSTECH · 2025 – Present", pattern:"diamond", img:"images/proj-bifoldable.jpg",
     title:"Bi-foldable Thick Panel Origami for Multi-configurable Systems",
-    bullets:[
-      "Proposed the extended offset crease method, a thickness-accommodating scheme for thick-panel origami",
-      "Performed kinematic analysis of a thickened degree-6 vertex using the Lagrangian multiplier method",
-      "Verified the predicted folding paths with laser-cut panel prototypes"],
+    challenge:"A crease pattern that folds cleanly on paper loses its single degree of freedom once the facets are given real thickness, and a thickened assembly rarely offers more than one folded state.",
+    approach:"I proposed the extended offset crease method, a thickness-accommodating scheme that keeps the folding motion alive, and derived the kinematics of a thickened degree-6 vertex using a Lagrangian multiplier formulation.",
+    outcome:"A single panel assembly folds in two directions and settles into multiple configurations. The predicted folding paths were reproduced in laser-cut panel prototypes.",
     tags:["Kinematic analysis","AutoCAD","Laser cutting"] },
 
   { kicker:"POSTECH · 2025 – Present", pattern:"hinge", img:"images/proj-actuator.jpg",
     title:"Origami-based Pneumatic Actuator for Satellite Missions",
-    bullets:[
-      "Developed a propellant-driven micro pneumatic actuator based on a thickness-accommodated Kresling pattern",
-      "Evaluated the structural rigidity of the inflated actuator across geometric parameters via cantilever and compression tests",
-      "Built with Lab-on-PCB fabrication in collaboration with the actuator team"],
+    challenge:"Actuators for satellite missions must pack into a small volume and still be stiff once deployed, which leaves little room for conventional motors.",
+    approach:"I developed a propellant-driven micro pneumatic actuator built on a thickness-accommodated Kresling pattern, fabricated with Lab-on-PCB technology.",
+    outcome:"Cantilever and compression tests across geometric parameters showed how the geometry governs the rigidity of the inflated actuator, giving concrete design guidance for the pattern.",
     tags:["Stiffness","Parametric study","Soft actuator"] },
 
   { kicker:"POSTECH · 2025", pattern:"strip", img:"images/proj-rolling.jpg",
     title:"Work Roll Crown Control in 4-High Hot Rolling Mills",
-    bullets:[
-      "Developed a numerical model of roll profile based on slit-beam deformation theory",
-      "Demonstrated the prediction formulas against finite element analysis"],
+    challenge:"Work roll crown decides the strip profile in hot rolling, but predicting it quickly enough to use for control is difficult with full simulation alone.",
+    approach:"I developed a numerical model of the roll profile based on slit-beam deformation theory and reduced it to prediction formulas.",
+    outcome:"The formulas were demonstrated against finite element analysis, and the work was accepted in Transactions of Materials Processing.",
     tags:["Numerical modelling","FE analysis"] },
 
   { kicker:"Extreme Mechanics Lab × SeAH Wind · Apr. – May 2025", pattern:"sheet", img:"images/proj-monopile.jpg",
     title:"Monopile Deformation on Growing Line Support Setup",
-    bullets:[
-      "Parametric study of plastic deformation in wind turbine monopiles under various turning roll setups using Abaqus",
-      "Optimized the turning roll arrangement to minimize plastic deformation"],
+    challenge:"Wind turbine monopiles can pick up plastic deformation during fabrication depending on how they rest on the turning rolls of the growing line.",
+    approach:"I ran a parametric study in Abaqus covering a range of turning roll setups and tracked the resulting plastic deformation.",
+    outcome:"An arrangement that minimizes plastic deformation was identified and passed to the industry partner as a support setup guideline.",
     tags:["Structural analysis","Abaqus"] },
 
   { kicker:"Handong Global University · 2023", pattern:"cell", img:"images/proj-shoulder.jpg",
     title:"Elastic Resistance and Shoulder Movement Patterns in Reaching Tasks",
-    bullets:[
-      "Investigated the effect of elastic resistance on proprioception during reaching motion",
-      "Analyzed kinematic motion by integrating IMU and vision sensor data"],
+    challenge:"How elastic resistance alters proprioception during a reaching task, and how that shows up in shoulder movement, was not well characterized.",
+    approach:"I set up reaching experiments under elastic resistance and analyzed the kinematics by integrating IMU and vision sensor data.",
+    outcome:"The combined measurement resolved shoulder movement patterns across resistance conditions, linking proprioceptive load to changes in reaching motion.",
     tags:["Proprioception","IMU","Motion analysis"] }
 ];
 
@@ -551,7 +550,11 @@ PROJECTS.forEach(p=>{
   row.className="topic";
   const txt=document.createElement("div");
   txt.innerHTML=`<p class="meta">${p.kicker}</p><h3>${p.title}</h3>
-    <ul class="bul">${p.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>
+    <dl class="cao">
+      <div class="row"><dt>CHALLENGE</dt><dd>${p.challenge}</dd></div>
+      <div class="row"><dt>APPROACH</dt><dd>${p.approach}</dd></div>
+      <div class="row"><dt>OUTCOME</dt><dd>${p.outcome}</dd></div>
+    </dl>
     <ul class="tags">${p.tags.map(k=>`<li>${k}</li>`).join("")}</ul>`;
   row.append(figureNode(p),txt); projList.appendChild(row);
 });
