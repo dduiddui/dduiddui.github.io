@@ -95,7 +95,7 @@ p{max-width:74ch}
 .edu{list-style:none;padding:0;margin:0}
 .edu li{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:10px 0;font-size:15px;border-bottom:1px dashed var(--panel)}
 .edu .y{color:var(--graphite);font-family:var(--disp);font-size:14.5px}
-.edu .d{font-size:13.5px;color:var(--graphite);margin:2px 0 0}
+.edu .d{display:block;font-size:13.5px;color:var(--graphite);margin:3px 0 0}
 
 /* 홈 하단 자동 슬라이드 */
 .stripwrap{margin-top:8px}
@@ -135,6 +135,11 @@ p{max-width:74ch}
 .cao .row{display:grid;grid-template-columns:98px 1fr;gap:18px;padding:12px 0;border-bottom:1px solid var(--panel)}
 .cao dt{font-family:var(--disp);font-size:11.5px;font-weight:600;letter-spacing:.12em;color:var(--graphite);padding-top:4px}
 .cao dd{margin:0;font-size:14.5px;color:var(--soft);line-height:1.65;max-width:64ch}
+.reflist{list-style:none;padding:0;margin:18px 0 0}
+.reflist .lab{font-family:var(--disp);font-size:11.5px;font-weight:600;letter-spacing:.12em;color:var(--graphite);margin:0 0 8px}
+.reflist li{position:relative;padding-left:18px;font-size:13.5px;color:var(--soft);line-height:1.6;margin:0 0 7px;max-width:66ch}
+.reflist li::before{content:"";position:absolute;left:0;top:10px;width:9px;border-top:1.5px solid var(--valley)}
+.reflist em{font-style:italic}
 .ref{font-size:13px;color:var(--graphite);margin:13px 0 0;padding-left:14px;border-left:2px solid var(--panel);max-width:64ch}
 .meta{font-size:13.5px;color:var(--graphite);margin:0 0 2px;font-family:var(--disp)}
 
@@ -159,6 +164,10 @@ p{max-width:74ch}
 .badge{display:inline-block;font-size:11.5px;border:1px solid var(--valley);color:var(--valley);
   border-radius:3px;padding:1px 8px;margin-left:8px;vertical-align:1.5px;white-space:nowrap}
 .badge.ok{border-color:var(--mountain);color:var(--mountain)}
+.ptype{display:inline-block;font-family:var(--disp);font-size:11px;font-weight:600;letter-spacing:.12em;
+  border-radius:3px;padding:2px 8px;margin-left:8px;vertical-align:1.5px;white-space:nowrap}
+.ptype.oral{background:var(--mountain);color:#fff}
+.ptype.poster{border:1px solid var(--panel);color:var(--graphite)}
 .doi{display:inline-block;margin-top:6px;font-size:13px;color:var(--valley);text-decoration:none;border-bottom:1px solid var(--panel)}
 .doi:hover{border-bottom-color:var(--valley)}
 .me{font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--mountain);padding-bottom:1px}
@@ -206,8 +215,8 @@ p{max-width:74ch}
       <div class="drop" id="drop">
         <button class="mbtn" type="button" id="dbtn" aria-expanded="false">Research</button>
         <div class="dpanel">
-          <a href="#/interests" data-p="interests">Research Interests</a>
           <a href="#/experiences" data-p="experiences">Research Experiences</a>
+          <a href="#/interests" data-p="interests">Research Interests</a>
         </div>
       </div>
       <a href="#/publications" data-p="publications">Publications</a>
@@ -250,9 +259,10 @@ p{max-width:74ch}
         <p class="hd">Education</p>
         <ul class="edu">
           <li>
-            <span class="y">Mar. 2025 – Feb. 2027</span>
-            <span>M.S. in Mechanical Engineering, POSTECH <span style="color:var(--graphite);font-size:13.5px">(expected)</span>
-              <span class="d">Extreme Mechanics Lab · Advisor: Prof. Anna Lee</span></span>
+            <span class="y">Mar. 2025 – Feb. 2027 <span style="color:var(--graphite)">(expected)</span></span>
+            <span>M.S. in Mechanical Engineering, POSTECH
+              <span class="d">Extreme Mechanics Lab</span>
+              <span class="d">Advisor: Prof. Anna Lee</span></span>
           </li>
           <li>
             <span class="y">Mar. 2019 – Feb. 2025</span>
@@ -405,14 +415,21 @@ p{max-width:74ch}
     <ol class="pubs">
       <li>
         <div>
-          <h4><span class="me">D. Yang</span>, and A. Lee*<span class="badge ok">2025</span></h4>
+          <h4><span class="me">D. Yang</span>, S. Kim, and A. Lee*<span class="ptype oral">ORAL</span><span class="badge ok">2026</span></h4>
+          <p class="venue">Design methodology for bi-directionally foldable thick-panel origami —
+            <em>KSME CAE and Applied Mechanics Division Spring Conference</em>, Korean Society of Mechanical Engineers, May 2026</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4><span class="me">D. Yang</span>, and A. Lee*<span class="ptype poster">POSTER</span><span class="badge ok">2025</span></h4>
           <p class="venue">Thickness-accommodating method for multi-configurable thick origami with bidirectional folding —
             <em>International Conference on Precision Engineering and Sustainable Manufacturing</em>, Chiang Mai, Thailand, July 2025</p>
         </div>
       </li>
       <li>
         <div>
-          <h4>S. Kim, J. Lee, <span class="me">D. Yang</span>, M. Kim, and A. Lee<span class="badge ok">2025</span></h4>
+          <h4>S. Kim, J. Lee, <span class="me">D. Yang</span>, M. Kim, and A. Lee<span class="ptype poster">POSTER</span><span class="badge ok">2025</span></h4>
           <p class="venue">Development of a micro pneumatic actuator driven by propellant utilizing Lab-on-PCB technology —
             <em>KSME Annual Meeting</em> (80th Anniversary), Korean Society of Mechanical Engineers, 2025</p>
         </div>
@@ -446,30 +463,41 @@ p{max-width:74ch}
 <script>
 /* ═══ ② Research Interests (홈 슬라이드에도 사용) ═══ */
 const INTERESTS = [
-  { kicker:"Thick-Panel Origami", pattern:"diamond", img:"images/thick-panel-origami.jpg",
-    title:"Thick-Panel Origami Design and Optimization",
-    body:"Restoring foldability once panels carry real thickness, and reaching several configurations from one crease pattern.",
-    tags:["Extended offset crease","Pleat folding","Bi-foldability"],
-    detail:"Zero-thickness crease patterns lose their intended motion as soon as the facets are given real thickness, and the conventional fixes break the symmetry of the pattern. The extended offset crease method alternates the clearance gaps across the two faces of the membrane, producing a pleat folding mode that absorbs the thickness overlap at uniform crease width. Geometry — sector angles, panel thickness, hinge offsets — is the design space, and candidate patterns are screened before anything is cut." },
+  { kicker:"01 · Mechanics & Kinematics", pattern:"hinge", img:"images/origami-kinematics.jpg",
+    title:"Mechanics and Kinematics of Origami",
+    body:"Deriving how a folded assembly moves and how much load it carries, rather than assuming it.",
+    detail:"A crease pattern is a constrained mechanism before it is a design. I am interested in the analytical side of that: how many degrees of freedom survive at a vertex, which folding branch a structure takes, and where the panels interfere along the way. Bar-and-hinge models let the same formulation carry both the kinematics and the elastic response, and a Lagrange multiplier formulation with nullspace projection traces the folding path that the geometry actually permits. The goal is a design tool that predicts motion and stiffness together, so that candidate patterns can be screened before anything is cut.",
+    tags:["Bar-and-hinge model","Lagrange multiplier method","Nullspace projection","Degrees of freedom"] },
 
-  { kicker:"Reconfigurable Actuation", pattern:"hinge", img:"images/buckling-actuator.jpg",
-    title:"Buckling-Induced Actuator for Reconfigurable Robots",
-    body:"Pressure-driven origami actuators that snap between states instead of relying on motors.",
-    tags:["Kresling pattern","Pneumatic actuation","Soft actuator"],
-    detail:"Origami patterns that buckle between stable states can be driven by pressure rather than by motors, which matters when mass and packaging are tight. I developed a propellant-driven micro pneumatic actuator built on a thickness-accommodated Kresling pattern, and measured how its geometric parameters govern the rigidity of the inflated structure through cantilever and compression tests." },
+  { kicker:"02 · Reconfigurable Systems", pattern:"cell", img:"images/thick-panel-origami.jpg",
+    title:"Reconfigurable Structures and Robots",
+    body:"One structure that reaches many useful shapes, instead of one shape built once.",
+    detail:"Most deployable structures move between exactly two states: packed and deployed. I am drawn to work that breaks that limit, where a single pattern reaches many load-bearing configurations and switches between them on demand. What makes this hard is keeping the reconfiguration predictable: a structure with many reachable shapes is only useful if you can choose which one it lands in.",
+    refs:[
+      "Y. Zhu, E. T. Filipov — Large-scale modular and uniformly thick origami-inspired adaptable and load-carrying structures (MUTOIS), <em>Nature</em>, 2024",
+      "Y. Yang et al. — Reconfigurable inflatables through controlled surface crumpling, <em>Advanced Science</em>, 2026",
+      "M. Mirzajanzadeh, D. Pasini — Reprogrammable curved-straight origami: multimorphability and volumetric tunability, <em>Science Advances</em>, 2025"],
+    tags:["Multi-configurability","Load-bearing origami","Deployable systems"] },
 
-  { kicker:"Kinematics & Mechanics", pattern:"cell", img:"images/origami-kinematics.jpg",
-    title:"Kinematics and Mechanics of Origami-based Structures",
-    body:"Analytical models for thickened vertices and the load-bearing behaviour of folded assemblies.",
-    tags:["Diamond vertex","Lagrange multiplier","Nullspace projection"],
-    detail:"A thickened vertex is a constrained mechanism, not a sheet, so its motion has to be derived rather than assumed. I trace folding paths with an energy-based incremental formulation that combines the Lagrange multiplier method with nullspace projection, following the branch along which the elastic energy decreases most rapidly and tracking where panels interfere along the way. The same models tell us how much load a folded assembly can carry once it is deployed." }
+  { kicker:"03 · Instability as a Mechanism", pattern:"diamond", img:"images/buckling-actuator.jpg",
+    title:"Buckling-induced Structures and Robots",
+    body:"Treating snap-through and buckling as a design element rather than a failure mode.",
+    detail:"Buckling is normally something to design against. Used deliberately, it becomes a way to store elastic energy slowly and release it quickly, or to lock a structure into a chosen state without holding it there. I am interested in how this transfers to thick panels and to systems that must both actuate and carry load, where the snap has to be repeatable and its threshold has to be set by geometry.",
+    refs:[
+      "J. A. Faber, A. F. Arrieta, A. R. Studart — Bioinspired spring origami, <em>Science</em>, 2018",
+      "W.-Y. Choi et al. — A hyperelastic torque-reversal mechanism for soft joints with compression-responsive transient bistability, <em>Science Robotics</em>, 2025",
+      "B. Gorissen et al. — Inflatable soft jumper inspired by shell snapping, <em>Science Robotics</em>, 2020",
+      "L. Lu, S. Leanza, L. Ning, R. R. Zhao — 2D-to-3D transformation of ring origami via snap-folding instabilities, 2025",
+      "S. Wu, J. Dai, S. Leanza, R. R. Zhao — Hexagonal ring origami: snap-folding with large packing ratio, <em>Extreme Mechanics Letters</em>, 2022",
+      "Multi-stable origami with thick panels"],
+    tags:["Snap-through","Bistability","Multistability","Energy storage"] }
 ];
 
 /* ═══ ③ Research Experiences ═══ */
 const POSITIONS = [
   { when:"Mar. 2025 – Present", role:"M.S. Candidate, Extreme Mechanics Lab",
     where:"Department of Mechanical Engineering, POSTECH, Pohang, Korea · Advisor: <b>Prof. Anna Lee</b>" },
-  { when:"Mar. 2022 – Dec. 2024", role:"Undergraduate Researcher, Human Robotics Lab",
+  { when:"Jan. 2023 – Dec. 2023", role:"Undergraduate Researcher, Human Robotics Lab",
     where:"Handong Global University, Pohang, Korea · Advisor: <b>Prof. Jaehyo Kim</b>" }
 ];
 
@@ -582,6 +610,7 @@ INTERESTS.forEach((t,i)=>{
   row.className="topic"; row.id="i"+i;
   const txt=document.createElement("div");
   txt.innerHTML=`<p class="k">${t.kicker}</p><h3>${t.title}</h3><p>${t.detail}</p>
+    ${t.refs?`<div class="reflist"><p class="lab">SELECTED READING</p><ul style="list-style:none;padding:0;margin:0">${t.refs.map(r=>`<li>${r}</li>`).join("")}</ul></div>`:""}
     <ul class="tags">${t.tags.map(k=>`<li>${k}</li>`).join("")}</ul>`;
   row.append(figureNode(t),txt); iList.appendChild(row);
 });
