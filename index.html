@@ -184,8 +184,24 @@ p{max-width:74ch}
 .awards h4{font-family:var(--disp);font-size:17px;font-weight:600;margin:0 0 3px}
 .awards p{font-size:14px;color:var(--graphite);margin:0}
 
+/* About: 본문 + CV 뷰어 */
+.aboutgrid{display:grid;grid-template-columns:minmax(0,1fr) 470px;gap:40px;align-items:start}
+.cvbox{position:sticky;top:86px;border:1px solid var(--panel);background:#fff;display:flex;flex-direction:column;
+  height:calc(100vh - 116px);min-height:480px;max-height:860px}
+.cvbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--panel);background:var(--paper)}
+.cvbar b{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--soft)}
+.cvbar a{font-size:13px;color:var(--valley);text-decoration:none;border-bottom:1px solid var(--panel)}
+.cvbar a:hover{border-bottom-color:var(--valley)}
+.cvscroll{flex:1;overflow-y:auto;background:#EDEBE6;padding:14px;overscroll-behavior:contain}
+.cvscroll canvas{display:block;width:100%;height:auto;background:#fff;box-shadow:0 1px 4px rgba(23,28,34,.12);margin:0 0 14px}
+.cvscroll canvas:last-child{margin:0}
+.cvscroll iframe{width:100%;height:100%;border:0;background:#fff}
+.cvmsg{font-size:13.5px;color:var(--graphite);text-align:center;padding:40px 10px}
+
 /* 반응형 */
 @media(max-width:900px){
+  .aboutgrid{grid-template-columns:1fr;gap:30px}
+  .cvbox{position:static;height:72vh;max-height:none}
   .top .in{height:auto;flex-direction:column;align-items:flex-start;gap:0;padding:12px 18px 0}
   .menu{width:100%;overflow-x:auto;gap:0}
   .menu>a,.mbtn{padding:12px 11px;white-space:nowrap}
@@ -316,6 +332,8 @@ p{max-width:74ch}
     <h2>About</h2>
     <p class="sub">Research statement, skills and references</p>
 
+    <div class="aboutgrid">
+    <div>
     <p>A crease pattern that folds cleanly on paper stops working once the panels have real
     thickness: the facets collide, and the single degree of freedom that made the pattern useful
     disappears. My work is about restoring that motion in thick, load-bearing panels — and about
@@ -350,6 +368,17 @@ p{max-width:74ch}
           <span class="d"><a href="mailto:jhkim@handong.edu">jhkim@handong.edu</a></span></span>
       </li>
     </ul>
+    </div>
+
+    <!-- CV 뷰어: index.html 옆의 cv.pdf를 표시합니다 -->
+    <aside class="cvbox" aria-label="Curriculum Vitae">
+      <div class="cvbar">
+        <b>CURRICULUM VITAE</b>
+        <a href="cv.pdf" target="_blank" rel="noopener">Open PDF ↗</a>
+      </div>
+      <div class="cvscroll" id="cvscroll"><p class="cvmsg">Loading CV…</p></div>
+    </aside>
+    </div>
   </div>
 </section>
 
@@ -752,6 +781,42 @@ strip.addEventListener("pointercancel",endDrag);
 strip.addEventListener("pointerleave",endDrag);
 reel.addEventListener("click",e=>{ if(moved>6) e.preventDefault(); });
 
+/* About 페이지 CV 뷰어 (PDF.js로 cv.pdf를 페이지별로 그림) */
+const CV_FILE="cv.pdf";
+let cvDone=false;
+function cvFallback(box){
+  box.style.padding="0";
+  box.innerHTML=`<iframe src="${CV_FILE}#view=FitH&toolbar=0" title="Curriculum Vitae"></iframe>`;
+}
+function loadCV(){
+  if(cvDone) return; cvDone=true;
+  const box=document.getElementById("cvscroll");
+  const s=document.createElement("script");
+  s.src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+  s.onerror=()=>cvFallback(box);
+  s.onload=async()=>{
+    try{
+      const lib=window.pdfjsLib;
+      lib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      const pdf=await lib.getDocument(CV_FILE).promise;
+      box.innerHTML="";
+      const ratio=Math.min(window.devicePixelRatio||1,2);
+      for(let n=1;n<=pdf.numPages;n++){
+        const page=await pdf.getPage(n);
+        const base=page.getViewport({scale:1});
+        const scale=Math.max(box.clientWidth-28,300)/base.width*ratio;
+        const vp=page.getViewport({scale});
+        const c=document.createElement("canvas");
+        c.width=vp.width; c.height=vp.height;
+        c.setAttribute("aria-label",`CV page ${n}`);
+        box.appendChild(c);
+        await page.render({canvasContext:c.getContext("2d"),viewport:vp}).promise;
+      }
+    }catch(err){ cvFallback(box); }
+  };
+  document.head.appendChild(s);
+}
+
 /* 페이지 전환 */
 const pages=[...document.querySelectorAll(".page")];
 const navs=[...document.querySelectorAll("[data-p]")];
@@ -764,6 +829,7 @@ function route(){
   d.classList.toggle("on",target==="experiences"||target==="interests");
   d.classList.remove("open");
   window.scrollTo(0,0);
+  if(target==="about") loadCV();
   document.title = target==="home" ? "Duwon Yang | Extreme Mechanics Lab, POSTECH"
     : navs.find(a=>a.dataset.p===target).textContent + " | Duwon Yang";
 }
