@@ -106,24 +106,25 @@ p{max-width:74ch}
   cursor:pointer;display:grid;place-items:center;color:var(--soft);transition:.16s}
 .nudge button:hover{border-color:var(--mountain);color:var(--mountain)}
 .nudge svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9}
-.strip{position:relative;width:100vw;margin:22px 0 0 calc(50% - 50vw);overflow:hidden;cursor:grab;touch-action:pan-y}
+.strip{position:relative;width:min(100%,1160px);margin:22px auto 0;overflow:hidden;cursor:grab;touch-action:pan-y}
 .strip.drag{cursor:grabbing}
-.strip::before,.strip::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:3;pointer-events:none}
+.strip::before,.strip::after{content:"";position:absolute;top:0;bottom:0;width:48px;z-index:3;pointer-events:none}
 .strip::before{left:0;background:linear-gradient(90deg,var(--paper),rgba(252,252,250,0))}
 .strip::after{right:0;background:linear-gradient(270deg,var(--paper),rgba(252,252,250,0))}
 .reel{display:flex;gap:18px;will-change:transform}
-.rcard{flex:0 0 340px;border:1px solid var(--panel);background:#fff;text-decoration:none;color:inherit;display:block;transition:border-color .18s}
+.rcard{flex:0 0 340px;min-width:0;max-width:340px;border:1px solid var(--panel);background:#fff;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color .18s}
 .rcard:hover{border-color:var(--mountain)}
-.rcard .thumb{aspect-ratio:16/10;background:#10141A;overflow:hidden}
+.rcard .thumb{aspect-ratio:16/10;min-height:0;flex:none;position:relative;background:#10141A;overflow:hidden}
+.rcard .thumb>*{position:absolute;inset:0}
 .rcard .thumb svg{width:100%;height:100%;object-fit:cover;display:block}
 .rcard .thumb img{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
 .rcard .body{padding:16px 18px 18px}
-.rcard .k{font-size:12px;letter-spacing:.09em;color:var(--mountain);margin:0 0 7px}
-.rcard h4{font-family:var(--disp);font-size:17px;font-weight:600;margin:0 0 7px;line-height:1.3}
+.rcard .k{font-size:12px;letter-spacing:.04em;line-height:1.5;color:var(--mountain);margin:0 0 8px;min-height:3em}
+.rcard h4{font-family:var(--disp);font-size:17px;font-weight:600;margin:0 0 7px;line-height:1.3;min-height:3.9em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .rcard p{font-size:13.5px;color:var(--graphite);margin:0;line-height:1.6}
 
 /* Research 페이지 공용 */
-.topic{display:grid;grid-template-columns:400px 1fr;gap:34px;align-items:start;padding:34px 0;border-top:1px solid var(--panel)}
+.topic{scroll-margin-top:80px;display:grid;grid-template-columns:400px 1fr;gap:34px;align-items:start;padding:34px 0;border-top:1px solid var(--panel)}
 .topic:first-of-type{border-top:0;padding-top:4px}
 .fig{background:#10141A;aspect-ratio:16/10;overflow:hidden}
 .fig svg{width:100%;height:100%;object-fit:cover;display:block}
@@ -217,11 +218,11 @@ p{max-width:74ch}
   .intro{grid-template-columns:1fr;gap:26px}
   .photo{max-width:224px;aspect-ratio:3/3.7}
   .nm{font-size:31px}.nm em{font-size:18px;display:block;margin:5px 0 0}
-  .topic{grid-template-columns:1fr;gap:18px}
+  .topic{grid-template-columns:1fr;gap:18px;scroll-margin-top:120px}
   .edu li{grid-template-columns:1fr;gap:2px}
   .cao .row{grid-template-columns:1fr;gap:4px}
   .striphead{padding:0 18px}
-  .rcard{flex-basis:270px}
+  .rcard{flex-basis:270px;max-width:270px}
   .sdg{padding:0 18px 22px}
   .strip::before,.strip::after{width:36px}
 }
@@ -316,8 +317,7 @@ p{max-width:74ch}
   <div class="stripwrap">
     <div class="striphead">
       <div>
-        <h2 style="font-size:23px">Research Interests</h2>
-        <p>Select a card to read more.</p>
+        <h2 style="font-size:23px">Research Experiences</h2>
       </div>
       <div class="nudge">
         <button type="button" id="left" aria-label="Scroll left"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -333,7 +333,7 @@ p{max-width:74ch}
 <section class="page" id="about">
   <div class="wrap">
     <h2>About</h2>
-    <p class="sub">Research statement, skills and references</p>
+    <p class="sub">Research statement, skills and advisors</p>
 
     <div class="aboutgrid">
     <div>
@@ -358,7 +358,7 @@ p{max-width:74ch}
     </ul>
 
     <hr class="rule">
-    <p class="hd">References</p>
+    <p class="hd">Advisors</p>
     <ul class="edu">
       <li>
         <span class="y">Prof. Anna Lee</span>
@@ -596,6 +596,7 @@ const POSITIONS = [
 const PROJECTS = [
   { kicker:"POSTECH · Extreme Mechanics Lab · 2025 – Present", badge:"In preparation",
     pattern:"diamond", img:"images/proj-bifoldable.png",
+    short:"Extended offset crease method that lets a thick-panel diamond vertex fold in both directions.",
     title:"Bi-Directional Folding of Diamond-Vertex Thick-Panel Origami for Reconfigurable Structures",
     challenge:"The diamond vertex folds as both a degree-4 and a degree-6 vertex, which makes it an attractive base unit for deployable structures — until the panels are given real thickness. Thickening a symmetric degree-4 vertex leaves the uneven panel overlap disconnected on the two sides, and the usual remedies, a wider crease block on one side or panels of non-uniform thickness, break the symmetry of the pattern and rule out folding in both directions.",
     approach:"I proposed the extended offset crease method, which alternates the clearance gaps across the two faces of the membrane and introduces a folding mode termed pleat folding. Pleat folding absorbs the thickness asymmetry of a degree-4 vertex at uniform crease width, so the symmetric profile of the pattern survives thickening. The folding paths of the resulting modes are traced with an energy-based incremental formulation that combines the Lagrange multiplier method with nullspace projection.",
@@ -605,6 +606,7 @@ const PROJECTS = [
 
   { kicker:"POSTECH · Extreme Mechanics Lab · 2025 – Present", badge:"In preparation",
     pattern:"hinge", img:"images/proj-actuator.jpg",
+    short:"Thickness-accommodated Kresling actuator inflated by on-board propellant gas.",
     title:"Origami-based Pneumatic Actuator for Satellite Missions",
     challenge:"Actuators for satellite missions must pack into a small volume and still be stiff once deployed, which leaves little room for conventional motors or for the pumps and power supplies that normally drive pneumatic systems.",
     approach:"I developed a micro pneumatic actuator built on a thickness-accommodated Kresling pattern, driven by high-energy-density propellant generated on a Lab-on-PCB platform rather than by an external pump.",
@@ -614,6 +616,7 @@ const PROJECTS = [
 
   { kicker:"POSTECH · Extreme Mechanics Lab × POSCO · 2025", badge:"Published",
     pattern:"strip", img:"images/proj-rolling.jpg",
+    short:"Linearized slit-beam model that predicts work-roll deformation ten times faster than iteration.",
     title:"Work-Roll Crown Control in 4-High Hot Rolling Mills",
     challenge:"Work-roll deformation sets the crown and flatness of hot-rolled strip. A model that captures roll deflection, backup-roll support, roll-to-strip flattening, initial crown and bender force at the same time is nonlinear, and solving it iteratively is too slow for on-line crown control.",
     approach:"We extended the Shohet–Townsend slit-beam deflection model so that all of these effects enter one system of equations, and linearized the nonlinear flattening term with a first-order Taylor expansion so the system can be solved directly. An ABAQUS half-model of the 4-high stand was built to verify the predictions.",
@@ -623,6 +626,7 @@ const PROJECTS = [
 
   { kicker:"POSTECH · Extreme Mechanics Lab × SeAH Wind · Apr. – May 2025",
     pattern:"sheet", img:"images/proj-monopile.jpg",
+    short:"Shell FE model of a 2,000-tonne offshore wind monopile on turning-roll supports.",
     title:"Monopile Deformation on Grow-Line Support Setup",
     challenge:"A 105 m offshore wind monopile weighing over 2,000 tonnes rests on three turning-roll supports while it is being fabricated, and the contact patches can yield locally. An earlier analysis by the project's engineering consultancy predicted plastic strain well above the allowable limit, so an independent model was needed before the support layout could be accepted.",
     approach:"I built an ABAQUS shell model of the monopile on rigid turning rolls — quadratic shell elements, S355ML with plasticity, frictionless roller contact, and a 1.52g design load following DNV standards — ran a mesh convergence study, and compared the results support by support against the consultancy's Ansys model at identical support spacing.",
@@ -632,6 +636,7 @@ const PROJECTS = [
 
   { kicker:"Handong Global University · Human Robotics Lab · 2023", badge:"Published",
     pattern:"cell", img:"images/proj-shoulder.jpg",
+    short:"Bilateral symmetry of vertical reaching against elastic load, without visual feedback.",
     title:"Elastic Resistance and Shoulder Movement Patterns in Reaching Tasks",
     challenge:"Reaching studies have largely examined the horizontal plane with visual feedback available. It was unclear whether people preserve bilateral symmetry during a vertical-plane reach against an elastic load when they cannot see their hands and must rely on proprioception alone.",
     approach:"Thirty participants performed band shoulder presses at low, moderate and high intensity without visual feedback, paced by a metronome. Motion was recorded with an RGB camera and reconstructed with OpenPose, which was validated against inertial measurement units worn on both forearms.",
@@ -716,9 +721,9 @@ POSITIONS.forEach(p=>{
   posList.appendChild(li);
 });
 const projList=document.getElementById("projList");
-PROJECTS.forEach(p=>{
+PROJECTS.forEach((p,i)=>{
   const row=document.createElement("article");
-  row.className="topic";
+  row.className="topic"; row.id="p"+i;
   const txt=document.createElement("div");
   txt.innerHTML=`<p class="meta">${p.kicker}</p>
     <h3>${p.title}${p.badge?`<span class="badge${p.badge==="Published"?" ok":""}">${p.badge}</span>`:""}</h3>
@@ -735,12 +740,12 @@ PROJECTS.forEach(p=>{
 /* 홈 슬라이드 */
 const reel=document.getElementById("reel"), strip=document.getElementById("strip");
 function buildCards(){
-  INTERESTS.forEach((t,i)=>{
+  PROJECTS.forEach((t,i)=>{
     const a=document.createElement("a");
-    a.className="rcard"; a.href="#/interests";
+    a.className="rcard"; a.href="#/experiences/p"+i;
     const th=figureNode(t); th.className="thumb";
     const b=document.createElement("div"); b.className="body";
-    b.innerHTML=`<p class="k">${t.kicker}</p><h4>${t.title}</h4><p>${t.body}</p>`;
+    b.innerHTML=`<p class="k">${t.kicker}</p><h4>${t.title}</h4><p>${t.short||""}</p>`;
     a.append(th,b); reel.appendChild(a);
   });
 }
@@ -822,7 +827,8 @@ function loadCV(){
 const pages=[...document.querySelectorAll(".page")];
 const navs=[...document.querySelectorAll("[data-p]")];
 function route(){
-  const id=(location.hash.replace("#/","")||"home");
+  const [id0,sub]=location.hash.replace("#/","").split("/");
+  const id=id0||"home";
   const target=document.getElementById(id)?id:"home";
   pages.forEach(p=>p.classList.toggle("on",p.id===target));
   navs.forEach(a=>a.classList.toggle("on",a.dataset.p===target));
@@ -830,6 +836,7 @@ function route(){
   d.classList.toggle("on",target==="experiences"||target==="interests");
   d.classList.remove("open");
   window.scrollTo(0,0);
+  if(sub){ const el=document.getElementById(sub); if(el) el.scrollIntoView(); }
   if(target==="about") loadCV();
   document.title = target==="home" ? "Duwon Yang | Extreme Mechanics Lab, POSTECH"
     : navs.find(a=>a.dataset.p===target).textContent + " | Duwon Yang";
