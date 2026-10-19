@@ -174,6 +174,8 @@ p{max-width:74ch}
 .doi.plain{color:var(--graphite);border:0;margin:6px 0 0}
 .sdg{max-width:1120px;margin:0 auto;padding:0 28px 30px;text-align:right;
   font-family:var(--disp);font-size:11px;letter-spacing:.22em;color:#CFCBC3;user-select:none}
+.xl{text-decoration:none;border-bottom:1px solid var(--panel);transition:.16s}
+.xl:hover{color:var(--valley);border-bottom-color:var(--valley)}
 .me{font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--mountain);padding-bottom:1px}
 
 /* Awards */
@@ -205,10 +207,11 @@ p{max-width:74ch}
   .top .in{height:auto;flex-direction:column;align-items:flex-start;gap:0;padding:12px 18px 0}
   .menu{width:100%;overflow-x:auto;gap:0}
   .menu>a,.mbtn{padding:12px 11px;white-space:nowrap}
-  .drop{position:static}
+  .drop{position:static;display:contents}
   .mbtn{display:none}
-  .dpanel{display:contents}
-  .dpanel a{padding:12px 11px;border-bottom:2px solid transparent}
+  .dpanel,.drop:hover .dpanel,.drop.open .dpanel{display:contents}
+  .dpanel a{display:inline-block;white-space:nowrap;padding:12px 11px;border-bottom:2px solid transparent}
+  .dpanel a:hover{background:none}
   .dpanel a.on{color:var(--ink);border-bottom-color:var(--mountain);background:none}
   .wrap{padding:34px 18px 70px}
   .intro{grid-template-columns:1fr;gap:26px}
@@ -260,7 +263,7 @@ p{max-width:74ch}
         <p class="mail">
           <a href="mailto:didendnjs00@postech.ac.kr">didendnjs00@postech.ac.kr</a>
         </p>
-        <p class="affil">Extreme Mechanics Lab, Department of Mechanical Engineering, POSTECH, Pohang, Korea</p>
+        <p class="affil"><a class="xl" href="https://www.xml-postech.com" target="_blank" rel="noopener">Extreme Mechanics Lab</a>, Department of Mechanical Engineering, POSTECH, Pohang, Korea</p>
 
         <ul class="links">
           <li><a href="cv.pdf">CV (PDF)</a></li>
@@ -282,7 +285,7 @@ p{max-width:74ch}
           <li>
             <span class="y">Mar. 2025 – Feb. 2027 <span style="color:var(--graphite)">(expected)</span></span>
             <span>M.S. in Mechanical Engineering, POSTECH
-              <span class="d">Extreme Mechanics Lab</span>
+              <span class="d"><a class="xl" href="https://www.xml-postech.com" target="_blank" rel="noopener">Extreme Mechanics Lab</a></span>
               <span class="d">Advisor: Prof. Anna Lee</span></span>
           </li>
           <li>
@@ -300,7 +303,7 @@ p{max-width:74ch}
 
         <p class="hd">Biography</p>
         <p>I am an M.S. candidate in Mechanical Engineering at POSTECH (Pohang University of Science
-        and Technology), working in the Extreme Mechanics Lab under Prof. Anna Lee. My research is
+        and Technology), working in the <a class="xl" href="https://www.xml-postech.com" target="_blank" rel="noopener">Extreme Mechanics Lab</a> under Prof. Anna Lee. My research is
         centered on thick-panel origami and reconfigurable systems, including the kinematics and
         mechanics of origami-based structures.</p>
         <p>Before POSTECH I received my B.S. in Mechanical &amp; Control Engineering from Handong
@@ -360,11 +363,13 @@ p{max-width:74ch}
       <li>
         <span class="y">Prof. Anna Lee</span>
         <span>Department of Mechanical Engineering, POSTECH
+          <span class="d">Ph.D., Mechanical Engineering, Massachusetts Institute of Technology</span>
           <span class="d"><a href="mailto:annalee@postech.ac.kr">annalee@postech.ac.kr</a></span></span>
       </li>
       <li>
         <span class="y">Prof. Jaehyo Kim</span>
         <span>Human Robotics Lab, Handong Global University
+          <span class="d">Ph.D., Computational Intelligence, Tokyo Institute of Technology</span>
           <span class="d"><a href="mailto:jhkim@handong.edu">jhkim@handong.edu</a></span></span>
       </li>
     </ul>
@@ -582,7 +587,7 @@ const INTERESTS = [
 
 /* ═══ ③ Research Experiences ═══ */
 const POSITIONS = [
-  { when:"Mar. 2025 – Present", role:"M.S. Candidate, Extreme Mechanics Lab",
+  { when:"Mar. 2025 – Present", role:"M.S. Candidate, <a class='xl' href='https://www.xml-postech.com' target='_blank' rel='noopener'>Extreme Mechanics Lab</a>",
     where:"Department of Mechanical Engineering, POSTECH, Pohang, Korea · Advisor: <b>Prof. Anna Lee</b>" },
   { when:"Jan. 2023 – Dec. 2023", role:"Undergraduate Researcher, Human Robotics Lab",
     where:"Handong Global University, Pohang, Korea · Advisor: <b>Prof. Jaehyo Kim</b>" }
