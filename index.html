@@ -130,9 +130,13 @@ p{max-width:74ch}
 .fig svg{width:100%;height:100%;object-fit:cover;display:block}
 .fig img{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
 .fig video,.rcard .thumb video{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
-.clips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 0}
+.clips{display:grid;grid-template-columns:1fr;gap:12px;margin:18px 0 0}
 .clips figure{margin:0;border:1px solid var(--panel);background:#fff}
-.clips video{width:100%;aspect-ratio:16/9;object-fit:contain;display:block;background:#fff}
+.clips .pair{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:0;align-items:center}
+.clips .pair video{width:100%;aspect-ratio:16/9;object-fit:contain;display:block;background:#fff}
+.clips .pair video+video{aspect-ratio:2/1}
+@media(max-width:600px){.clips .pair{grid-template-columns:1fr}.clips .pair video+video{border-left:0;border-top:1px solid var(--panel)}}
+.clips .pair video+video{border-left:1px solid var(--panel)}
 .clips figcaption{font-size:12.5px;color:var(--graphite);padding:6px 10px;border-top:1px solid var(--panel)}
 .k{font-size:12.5px;letter-spacing:.09em;color:var(--mountain);margin:0 0 8px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;list-style:none;padding:0;margin:14px 0 0}
@@ -224,7 +228,6 @@ p{max-width:74ch}
   .photo{max-width:224px;aspect-ratio:3/3.7}
   .nm{font-size:31px}.nm em{font-size:18px;display:block;margin:5px 0 0}
   .topic{grid-template-columns:1fr;gap:18px;scroll-margin-top:120px}
-  .clips{grid-template-columns:1fr}
   .edu li{grid-template-columns:1fr;gap:2px}
   .cao .row{grid-template-columns:1fr;gap:4px}
   .striphead{padding:0 18px}
@@ -615,12 +618,12 @@ const POSITIONS = [
 
 const PROJECTS = [
   { kicker:"POSTECH · Extreme Mechanics Lab · 2025 – Present", badge:"Submitted",
-    pattern:"diamond", img:"images/proj-bifoldable.png", video:"videos/td6v-forward-3d.mp4",
+    pattern:"diamond", img:"images/proj-bifoldable.png",
     clips:[
-      {src:"videos/td6v-forward-3d.mp4",  cap:"TD6V · forward folding"},
-      {src:"videos/td4v-forward-3d.mp4",  cap:"TD4V · forward folding"},
-      {src:"videos/td6v-backward-3d.mp4", cap:"TD6V · backward folding"},
-      {src:"videos/td4v-backward-3d.mp4", cap:"TD4V · backward folding"}],
+      {model:"videos/td6v-forward-3d.mp4",  path:"videos/td6v-forward-path.mp4",  cap:"TD6V · forward folding — folded model (left) and folding path (right)"},
+      {model:"videos/td4v-forward-3d.mp4",  path:"videos/td4v-forward-path.mp4",  cap:"TD4V · forward folding — folded model (left) and folding path (right)"},
+      {model:"videos/td6v-backward-3d.mp4", path:"videos/td6v-backward-path.mp4", cap:"TD6V · backward folding — folded model (left) and folding path (right)"},
+      {model:"videos/td4v-backward-3d.mp4", path:"videos/td4v-backward-path.mp4", cap:"TD4V · backward folding — folded model (left) and folding path (right)"}],
     short:"Extended offset crease method that lets a thick-panel diamond vertex fold in both directions.",
     title:"Bi-Directional Folding of Diamond-Vertex Thick-Panel Origami for Reconfigurable Structures",
     challenge:"The diamond vertex folds as both a degree-4 and a degree-6 vertex, which makes it an attractive base unit for deployable structures — until the panels are given real thickness. Thickening a symmetric degree-4 vertex leaves the uneven panel overlap disconnected on the two sides, and the usual remedies, a wider crease block on one side or panels of non-uniform thickness, break the symmetry of the pattern and rule out folding in both directions.",
@@ -767,10 +770,21 @@ PROJECTS.forEach((p,i)=>{
       <div class="row"><dt>APPROACH</dt><dd>${p.approach}</dd></div>
       <div class="row"><dt>OUTCOME</dt><dd>${p.outcome}</dd></div>
     </dl>
-    ${p.clips?`<div class="clips">${p.clips.map(c=>`<figure><video src="${c.src}" autoplay muted loop playsinline preload="metadata"></video><figcaption>${c.cap}</figcaption></figure>`).join("")}</div>`:""}
+    ${p.clips?`<div class="clips">${p.clips.map(c=>`<figure><div class="pair"><video src="${c.model}" muted playsinline preload="auto"></video><video src="${c.path}" muted playsinline preload="auto"></video></div><figcaption>${c.cap}</figcaption></figure>`).join("")}</div>`:""}
     ${p.ref?`<p class="ref">${p.ref}</p>`:""}
     <ul class="tags">${p.tags.map(k=>`<li>${k}</li>`).join("")}</ul>`;
   row.append(figureNode(p),txt); projList.appendChild(row);
+});
+
+/* 3D 모델 + 경로 그래프를 한 세트로 같이 재생 (둘 다 끝나면 함께 처음부터) */
+document.querySelectorAll(".clips .pair").forEach(pair=>{
+  const vs=[...pair.querySelectorAll("video")];
+  vs.forEach(v=>{ v.muted=true; v.addEventListener("ended",()=>{
+    if(vs.every(x=>x.ended)){ vs.forEach(x=>{x.currentTime=0; x.play().catch(()=>{});}); }
+  }); });
+  let started=false;
+  const start=()=>{ if(started) return; started=true; vs.forEach(x=>{x.currentTime=0; x.play().catch(()=>{});}); };
+  Promise.all(vs.map(v=>v.readyState>=3?1:new Promise(r=>v.addEventListener("canplay",r,{once:true})))).then(start);
 });
 
 /* 홈 슬라이드 */
